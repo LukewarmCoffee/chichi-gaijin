@@ -1,3 +1,5 @@
+import 'package:chichi_gaijin_two/models/content_cards.dart';
+import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:flutter/foundation.dart';
 //internal
 import 'package:chichi_gaijin_two/models/lesson.dart';
@@ -8,10 +10,16 @@ import 'package:chichi_gaijin_two/models/lesson.dart';
 //more specifically, how long they take to finish lessons and
 //how well they perform on reviews
 class Agenda with ChangeNotifier{  
-  List<Lesson> _agenda = [];
+  List<Lesson> _lessons = [
+    Lesson(
+      title: 'Example Title',
+      cards: [TitleCard(title: 'Example Card')],
+      type: LessonTypes.authorLesson,
+    ),
+  ];
 
-  List<Lesson> get agenda {
-    return _agenda;
+  List<Lesson> get lessons {
+    return _lessons;
   }
 
 }
