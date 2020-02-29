@@ -1,7 +1,8 @@
-import 'package:chichi_gaijin_two/models/content_cards.dart';
-import 'package:chichi_gaijin_two/models/lesson_types.dart';
-import 'package:flutter/cupertino.dart';
+//external imports
 import 'package:flutter/foundation.dart';
+//internal imports
+import './content_cards.dart';
+import './lesson_types.dart';
 
 class Lesson {
   final String title;

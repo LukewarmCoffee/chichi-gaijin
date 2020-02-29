@@ -1,5 +1,4 @@
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 //can contain multiple kanji
 //word != lexeme
 //as in, each word only represents a single definition and not all of its constiuents
