@@ -16,4 +16,9 @@ class Deck with ChangeNotifier{
     return _extraReviews;
   }
 
+  add(Word word){
+    _deck.add(word);
+    notifyListeners();
+  }
+
 }

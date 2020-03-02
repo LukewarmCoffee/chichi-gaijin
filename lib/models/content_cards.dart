@@ -1,3 +1,4 @@
+import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/foundation.dart';
 //Contains all the types of cards a user might see
 //The meat and potatoes of this app
@@ -12,3 +13,16 @@ class TitleCard implements ContentCards {
     this.subtitle,
   });
 }
+//Special card; adds this card to deck upon finishing a lesson
+class VocabCard implements ContentCards {
+  //the word to be added
+  final Word word;
+  //whether the user can see this card during the lesson
+  final bool hidden;
+
+  const VocabCard({
+    @required this.word,
+    @required this.hidden,
+  });
+}
+ 
