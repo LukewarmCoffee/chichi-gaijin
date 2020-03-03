@@ -25,4 +25,14 @@ class VocabCard implements ContentCards {
     @required this.hidden,
   });
 }
+
+//Special card; user decides whether they understand the card or not
+//displays a word, in japanese, user asked for word in english
+class EnglishReview implements ContentCards {
+  final Word word;
+
+  const EnglishReview ({
+    @required this.word,
+  });
+}
  

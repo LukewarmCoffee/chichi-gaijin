@@ -1,4 +1,3 @@
-import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 import 'package:chichi_gaijin_two/providers/main/agenda.dart';
 //external
