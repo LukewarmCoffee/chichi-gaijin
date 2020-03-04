@@ -24,6 +24,8 @@ class VocabCardView extends StatelessWidget {
         Text(word.romaji),
         Text(word.english),
         Text(word.definition),
+        Text(word.confidence.toString()),
+        Text(word.learned.toString()),
       ],
     );
   }
