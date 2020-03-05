@@ -1,37 +1,34 @@
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
-import 'package:chichi_gaijin_two/providers/main/agenda.dart';
-//external
+import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//first touch for the user
 class Home extends StatelessWidget {
   static const route = '/';
-
   @override
   Widget build(BuildContext context) {
+    final agenda = Provider.of<Agenda>(context);
+    final lessons = agenda.lessons;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agenda'),
+        title: Text('home2'),
       ),
-      body: Consumer<Agenda>(
-        builder: (_, agenda, __) {
-          final lessons = agenda.lessons;
-          //list of currently available lessons
-          return ListView.builder(
-            itemCount: lessons.length,
-            itemBuilder: (BuildContext context, int lessonIndex) {
-              return RaisedButton(
-                onPressed: () => Navigator.pushNamed(
-                  context,
-                  LessonPage.route,
-                  arguments: lessonIndex,
-                ),
-                child: Text(lessons[lessonIndex].title),
-              );
-            },
+      body: ListView.builder(
+        itemCount: lessons.length,
+        itemBuilder: (BuildContext context, int lessonIndex) {
+          return RaisedButton(
+            onPressed: () => Navigator.pushNamed(
+              context,
+              LessonPage.route,
+              arguments: lessonIndex,
+            ),
+            child: Text(lessons[lessonIndex].title),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => agenda.initData(),
       ),
     );
   }

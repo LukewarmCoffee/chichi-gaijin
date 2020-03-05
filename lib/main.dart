@@ -2,12 +2,13 @@
 import 'package:chichi_gaijin_two/pages/home.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 //providers
-import 'package:chichi_gaijin_two/providers/main/agenda.dart';
-import 'package:chichi_gaijin_two/providers/main/deck.dart';
-import 'package:chichi_gaijin_two/providers/main/hidden_lessons.dart';
+
 //external imports
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'providers/deck.dart';
+import 'providers/providers.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,12 +17,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<Agenda>(create: (_) => Agenda()),
         ChangeNotifierProvider<Deck>(
           create: (_) => Deck(),
         ),
+        //TODO: whats the difference between this and proxy
         ChangeNotifierProvider<HiddenLessons>(
-          create: (_) => HiddenLessons(),
+          create: (_) => HiddenLessons(deck: Deck().deck),
+        ),
+        ChangeNotifierProxyProvider<Deck, Agenda>(
+          create: (_) => Agenda(deck: Deck().deck), //unsure if best way to do
+          update: (_, deck, __) => Agenda(
+            deck: deck.deck,
+          ),
         ),
       ],
       child: MaterialApp(
@@ -38,7 +45,6 @@ class MyApp extends StatelessWidget {
                 );
               },
             );
-
           return MaterialPageRoute(
             builder: (_) {
               return Home();

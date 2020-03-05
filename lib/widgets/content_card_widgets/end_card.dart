@@ -1,4 +1,4 @@
-import 'package:chichi_gaijin_two/providers/proxys/finish_lesson.dart';
+import 'package:chichi_gaijin_two/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

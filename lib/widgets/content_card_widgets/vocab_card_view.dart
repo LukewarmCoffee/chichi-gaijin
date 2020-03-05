@@ -1,5 +1,5 @@
 import 'package:chichi_gaijin_two/models/content_cards.dart';
-import 'package:chichi_gaijin_two/providers/main/agenda.dart';
+import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

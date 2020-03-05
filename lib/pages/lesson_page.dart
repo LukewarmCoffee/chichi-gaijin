@@ -1,11 +1,7 @@
-import 'package:chichi_gaijin_two/content_card_widgets/end_card.dart';
-import 'package:chichi_gaijin_two/content_card_widgets/title_card_view.dart';
-import 'package:chichi_gaijin_two/content_card_widgets/vocab_card_view.dart';
 import 'package:chichi_gaijin_two/models/content_cards.dart';
-import 'package:chichi_gaijin_two/providers/main/agenda.dart';
-import 'package:chichi_gaijin_two/providers/main/deck.dart';
-import 'package:chichi_gaijin_two/providers/main/hidden_lessons.dart';
-import 'package:chichi_gaijin_two/providers/proxys/finish_lesson.dart';
+import 'package:chichi_gaijin_two/providers/providers.dart';
+import 'package:chichi_gaijin_two/services/services.dart';
+import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
