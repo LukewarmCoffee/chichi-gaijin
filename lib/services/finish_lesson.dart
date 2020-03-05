@@ -17,7 +17,6 @@ class FinishLesson{
   endLesson({@required int lessonIndex}){
     final lesson = hiddenLessons.pop();
 
-
     if(lesson != null)
       agenda.add(lesson);
 

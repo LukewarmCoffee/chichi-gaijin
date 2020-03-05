@@ -3,7 +3,7 @@ import 'package:chichi_gaijin_two/models/lesson.dart';
 import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/foundation.dart';
-
+//The Lessons the user has access to
 class Agenda with ChangeNotifier {
   final List<Word> deck;
 
@@ -12,7 +12,7 @@ class Agenda with ChangeNotifier {
   });
 
   List<Lesson> _lessons = [];
-
+  //dummy data
   initData() {
     _lessons.add(
       Lesson(
