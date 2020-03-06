@@ -1,6 +1,7 @@
 //routes
 import 'package:chichi_gaijin_two/pages/home.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
+import 'package:chichi_gaijin_two/providers/lessons.dart';
 //providers
 
 //external imports
@@ -20,14 +21,19 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Deck>(
           create: (_) => Deck(),
         ),
+        ChangeNotifierProvider<Lessons>(
+          create: (_) => Lessons(),
+        ),
         //TODO: whats the difference between this and proxy
         ChangeNotifierProvider<HiddenLessons>(
           create: (_) => HiddenLessons(deck: Deck().deck),
         ),
-        ChangeNotifierProxyProvider<Deck, Agenda>(
-          create: (_) => Agenda(deck: Deck().deck), //unsure if best way to do
-          update: (_, deck, __) => Agenda(
+        ProxyProvider3<Deck, Lessons, HiddenLessons, Agenda>(
+          //create: (deck) => Agenda(deck: deck), //unsure if best way to do
+          update: (_, deck, lessons, hiddenLessons, __) => Agenda(
             deck: deck.deck,
+            lessonsProv: lessons,
+            hiddenLessons: hiddenLessons,
           ),
         ),
       ],

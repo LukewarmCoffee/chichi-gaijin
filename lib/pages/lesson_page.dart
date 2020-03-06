@@ -24,14 +24,14 @@ class LessonPage extends StatelessWidget {
       body: MultiProvider(
         providers: [
           ProxyProvider3<Agenda, HiddenLessons, Deck, FinishLesson>(
-          update: (_, agenda, hiddenLessons, deck, __) => FinishLesson(
-            agenda: agenda,
-            hiddenLessons: hiddenLessons,
-            deck: deck,
+            update: (_, agenda, hiddenLessons, deck, __) => FinishLesson(
+              agenda: agenda,
+              hiddenLessons: hiddenLessons,
+              deck: deck,
+            ),
           ),
-        ),
         ],
-              child: PageView(
+        child: PageView(
           children: <Widget>[
             for (int cardIndex = 0; cardIndex < cards.length; cardIndex++)
               if (cards.length != cardIndex)
@@ -45,7 +45,10 @@ class LessonPage extends StatelessWidget {
                   VocabCardView(
                     lessonIndex: lessonIndex,
                     cardIndex: cardIndex,
-                  ),
+                  )
+                else if (cards[cardIndex] is EnglishReview)
+                  EnglishReviewView(
+                      lessonIndex: lessonIndex, cardIndex: cardIndex),
             EndCard(lessonIndex: lessonIndex),
           ],
         ),

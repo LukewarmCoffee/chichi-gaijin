@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 //can contain multiple kanji
 //word != lexeme
@@ -19,8 +20,10 @@ class Word {
   final double confidence;
   //if the user has learned this word
   final bool learned;
+  //UUid
+  final String id;
 
-  const Word({
+  Word({
     @required this.japanese,
     @required this.kana,
     @required this.romaji,
@@ -28,6 +31,8 @@ class Word {
     @required this.definition,
     double confidence = 0.0,
     bool learned = false,
+    String id,
   })  : this.confidence = confidence ?? 0.0,
-        this.learned = learned ?? false;
+        this.learned = learned ?? false,
+        this.id = id ?? Uuid().v4();
 }

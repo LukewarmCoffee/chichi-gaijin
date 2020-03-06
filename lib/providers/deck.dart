@@ -39,4 +39,27 @@ class Deck with ChangeNotifier {
     _deck.add(word);
     notifyListeners();
   }
+
+  changeConfidence({@required Word word, @required double confidence}) {
+    int index = deck.indexWhere((oldWord) => oldWord.id == word.id);
+
+    deck.replaceRange(
+      index,
+      index + 1,
+      [
+        Word(
+          japanese: word.japanese,
+          kana: word.kana,
+          romaji: word.romaji,
+          english: word.english,
+          definition: word.definition,
+          confidence: (word.confidence + confidence),
+          learned: word.learned,
+          id: word.id,
+        ),
+      ],
+    );
+
+    notifyListeners();
+  }
 }
