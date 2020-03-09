@@ -24,16 +24,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Lessons>(
           create: (_) => Lessons(),
         ),
-        //TODO: whats the difference between this and proxy
         ChangeNotifierProvider<HiddenLessons>(
-          create: (_) => HiddenLessons(deck: Deck().deck),
+          create: (_) => HiddenLessons(),
         ),
-        ProxyProvider3<Deck, Lessons, HiddenLessons, Agenda>(
-          //create: (deck) => Agenda(deck: deck), //unsure if best way to do
-          update: (_, deck, lessons, hiddenLessons, __) => Agenda(
+        ProxyProvider2<Deck, Lessons, Agenda>(
+          update: (_, deck, lessons, __) => Agenda(
             deck,
             lessons,
-            hiddenLessons,
           ),
         ),
       ],

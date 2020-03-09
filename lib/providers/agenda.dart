@@ -2,21 +2,18 @@ import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/lesson.dart';
 import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
-import 'package:chichi_gaijin_two/providers/hidden_lessons.dart';
-import 'package:flutter/foundation.dart';
 
 import 'deck.dart';
 import 'lessons.dart';
-//The Lessons the user has access to
-class Agenda {
+//This is actually a service, however  I will be treating it like the actual data
+//source for Lessons
+class Agenda{
   final Deck _deck;
   final Lessons _lessons;  
-  final HiddenLessons _hiddenLessons;
 
   const Agenda(
     this._deck,
     this._lessons,
-    this._hiddenLessons,
   );
 
   //dummy data
@@ -38,10 +35,6 @@ class Agenda {
   Word getWord(String id){
     return _deck.deck.firstWhere((word) => word.id == id);
   }
-
-
-
-  
 
   List<Lesson> get lessons {
     return _lessons.lessons;
