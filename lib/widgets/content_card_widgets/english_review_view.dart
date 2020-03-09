@@ -34,12 +34,13 @@ class _EnglishReviewViewState extends State<EnglishReviewView> {
     final EnglishReview review =
         agenda.lessons[widget.lessonIndex].cards[widget.cardIndex];
     final deck = Provider.of<Deck>(context);
+    final word = agenda.getWord(review.wordId);
 
     return showAnswer
         ? Column(
             children: <Widget>[
               Text('What does this word mean in English?'),
-              Text(review.word.japanese),
+              Text(word.japanese),
               RaisedButton(
                 onPressed: () => checkAnswer(),
                 child: Text('show answer'),
@@ -49,18 +50,18 @@ class _EnglishReviewViewState extends State<EnglishReviewView> {
         : Column(
             children: <Widget>[
               Text('What does this word mean in English?'),
-              Text(review.word.japanese),
-              Text(review.word.english),
+              Text(word.japanese),
+              Text(word.english),
               Row(
                 children: <Widget>[
                   RaisedButton(
                     onPressed: () => deck.changeConfidence(
-                        word: review.word, confidence: -1.0),
+                        word: word, confidence: -1.0),
                     child: Text('bad'),
                   ),
                   RaisedButton(
                     onPressed: () => deck.changeConfidence(
-                        word: review.word, confidence: 1.0),
+                        word: word, confidence: 1.0),
                     child: Text('good'),
                   ),
                 ],

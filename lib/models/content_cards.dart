@@ -16,12 +16,13 @@ class TitleCard implements ContentCards {
 //Special card; adds this card to deck upon finishing a lesson
 class VocabCard implements ContentCards {
   //the word to be added
-  final Word word;
+  //final Word word;
+  final String wordId;
   //whether the user can see this card during the lesson
   final bool hidden;
 
   const VocabCard({
-    @required this.word,
+    @required this.wordId,
     @required this.hidden,
   });
 }
@@ -29,10 +30,11 @@ class VocabCard implements ContentCards {
 //Special card; user decides whether they understand the card or not
 //displays a word, in japanese, user asked for word in english
 class EnglishReview implements ContentCards {
-  final Word word;
+  //final Word word;
+  final String wordId;
 
   const EnglishReview ({
-    @required this.word,
+    @required this.wordId,
   });
 }
  

@@ -16,7 +16,7 @@ class VocabCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     final agenda = Provider.of<Agenda>(context);
     final VocabCard card = agenda.lessons[lessonIndex].cards[cardIndex];
-    final word = card.word;
+    final word = agenda.getWord(card.wordId);
     return Column(
       children: <Widget>[
         Text(word.japanese),

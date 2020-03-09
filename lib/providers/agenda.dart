@@ -26,13 +26,17 @@ class Agenda {
         title: 'Example 2 Title',
         cards: [
           TitleCard(title: 'Example Card'),
-          VocabCard(word: _deck.deck[0], hidden: false),
-          VocabCard(word: _deck.deck[1], hidden: true),
-          EnglishReview(word: _deck.deck[0],),
+          VocabCard(wordId: _deck.deck[0].id, hidden: false),
+          VocabCard(wordId: _deck.deck[1].id, hidden: true),
+          EnglishReview(wordId: _deck.deck[0].id,),
         ],
         type: LessonTypes.authorLesson,
       ),
     );
+  }
+
+  Word getWord(String id){
+    return _deck.deck.firstWhere((word) => word.id == id);
   }
 
 
