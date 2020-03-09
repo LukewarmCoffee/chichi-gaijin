@@ -9,37 +9,41 @@ import 'deck.dart';
 import 'lessons.dart';
 //The Lessons the user has access to
 class Agenda {
-  final List<Word> deck;
-  final List<Lessons> lessons;  
-  final HiddenLessons hiddenLessons;
+  final Deck _deck;
+  final Lessons _lessons;  
+  final HiddenLessons _hiddenLessons;
 
-  const Agenda({
-    @required this.deck,
-    @required this.lessons,
-    @required this.hiddenLessons,
-  });
+  const Agenda(
+    this._deck,
+    this._lessons,
+    this._hiddenLessons,
+  );
 
   //dummy data
   initData() {
-    lessons.add(
+    _lessons.add(
       Lesson(
         title: 'Example 2 Title',
         cards: [
           TitleCard(title: 'Example Card'),
-          VocabCard(word: deck[0], hidden: false),
-          VocabCard(word: deck[1], hidden: true),
-          EnglishReview(word: deck[0],),
+          VocabCard(word: _deck.deck[0], hidden: false),
+          VocabCard(word: _deck.deck[1], hidden: true),
+          EnglishReview(word: _deck.deck[0],),
         ],
         type: LessonTypes.authorLesson,
       ),
     );
   }
 
+
+
+  
+
   List<Lesson> get lessons {
-    return lessonsProv.lessons;
+    return _lessons.lessons;
   }
 
   add(Lesson lesson) {
-    lessonsProv.add(lesson);
+    _lessons.add(lesson);
   }
 }

@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
         ProxyProvider3<Deck, Lessons, HiddenLessons, Agenda>(
           //create: (deck) => Agenda(deck: deck), //unsure if best way to do
           update: (_, deck, lessons, hiddenLessons, __) => Agenda(
-            deck: deck.deck,
-            lessonsProv: lessons,
-            hiddenLessons: hiddenLessons,
+            deck,
+            lessons,
+            hiddenLessons,
           ),
         ),
       ],
