@@ -24,6 +24,7 @@ class Deck with ChangeNotifier {
       learned: false,
     ),
   ];
+
   //single list per content type ideally
   List<ContentCards> _extraReviews = [];
 
@@ -59,6 +60,32 @@ class Deck with ChangeNotifier {
         ),
       ],
     );
+
+    notifyListeners();
+  }
+
+  changeConfidences(
+      {@required List<String> words, @required double confidence}) {
+    for (int i = 0; i < words.length; i++) {
+      int index = deck.indexWhere((word) => word.id == words[i]);
+      Word word = deck[index];
+      deck.replaceRange(
+        index,
+        index + 1,
+        [
+          Word(
+            japanese: word.japanese,
+            kana: word.kana,
+            romaji: word.romaji,
+            english: word.english,
+            definition: word.definition,
+            confidence: (word.confidence + confidence),
+            learned: word.learned,
+            id: word.id,
+          ),
+        ],
+      );
+    }
 
     notifyListeners();
   }

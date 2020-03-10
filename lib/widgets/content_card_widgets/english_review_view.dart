@@ -55,13 +55,21 @@ class _EnglishReviewViewState extends State<EnglishReviewView> {
               Row(
                 children: <Widget>[
                   RaisedButton(
-                    onPressed: () => deck.changeConfidence(
-                        word: word, confidence: -1.0),
+                    onPressed: () => {
+                      deck.changeConfidence(word: word, confidence: -1.0),
+                      agenda.removeReviewable(
+                          lessonIndex: widget.lessonIndex,
+                          cardIndex: widget.cardIndex),
+                    },
                     child: Text('bad'),
                   ),
                   RaisedButton(
-                    onPressed: () => deck.changeConfidence(
-                        word: word, confidence: 1.0),
+                    onPressed: () => {
+                      deck.changeConfidence(word: word, confidence: 1.0),
+                      agenda.removeReviewable(
+                          lessonIndex: widget.lessonIndex,
+                          cardIndex: widget.cardIndex),
+                    },
                     child: Text('good'),
                   ),
                 ],

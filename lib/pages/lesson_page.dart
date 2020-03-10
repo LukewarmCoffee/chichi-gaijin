@@ -2,6 +2,7 @@ import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:chichi_gaijin_two/services/services.dart';
 import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
+import 'package:chichi_gaijin_two/widgets/content_card_widgets/english_sentence_review_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +49,11 @@ class LessonPage extends StatelessWidget {
                   )
                 else if (cards[cardIndex] is EnglishReview)
                   EnglishReviewView(
-                      lessonIndex: lessonIndex, cardIndex: cardIndex),
+                      lessonIndex: lessonIndex, cardIndex: cardIndex,)
+                else if (cards[cardIndex] is EnglishSentenceReview &&
+                    !(cards[cardIndex] as EnglishSentenceReview).hidden)
+                  EnglishSentenceReviewView(
+                      lessonIndex: lessonIndex, cardIndex: cardIndex,),
             EndCard(lessonIndex: lessonIndex),
           ],
         ),

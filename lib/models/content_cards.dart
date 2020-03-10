@@ -14,7 +14,7 @@ class TitleCard implements ContentCards {
 }
 //Special card; adds this card to deck upon finishing a lesson
 class VocabCard implements ContentCards {
-  //the word to be added
+  //the word to be learned
   final String wordId;
   //whether the user can see this card during the lesson
   final bool hidden;
@@ -33,5 +33,21 @@ class EnglishReview implements ContentCards {
   const EnglishReview ({
     @required this.wordId,
   });
+}
+//user decides if they understand the translation in english or not,
+class EnglishSentenceReview implements ContentCards {
+  //ids of all the words in the sentence
+  final List<String> words;
+  //whether the user can see this during the lesson
+  final bool hidden;
+  //an optional natural translation for the sentence
+  final String translation;
+
+  const EnglishSentenceReview({
+    @required this.words,
+    @required this.hidden,
+    String translation = '',
+  }) : this.translation = translation ?? '';
+
 }
  

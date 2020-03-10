@@ -14,4 +14,9 @@ class Lessons with ChangeNotifier{
     notifyListeners();
   }
 
+  removeCard({int lessonIndex, int cardIndex}){
+    _lessons[lessonIndex].cards.removeAt(cardIndex);
+    notifyListeners();
+  }
+
 }

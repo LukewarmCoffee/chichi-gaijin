@@ -1,11 +1,9 @@
 import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/lesson.dart';
 import 'package:chichi_gaijin_two/models/lesson_types.dart';
-import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/foundation.dart';
 
 class HiddenLessons with ChangeNotifier {
-
   //Lessons to be eventually added to the Agenda
   List<Lesson> _lessons = [
     Lesson(
