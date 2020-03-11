@@ -12,6 +12,14 @@ class TitleCard implements ContentCards {
     this.subtitle,
   });
 }
+//typically used for making a paragraph of text
+class BodyCard implements ContentCards {
+  final String body;
+
+  const BodyCard({
+    @required this.body,
+  });
+}
 //Special card; adds this card to deck upon finishing a lesson
 class VocabCard implements ContentCards {
   //the word to be learned
@@ -24,7 +32,6 @@ class VocabCard implements ContentCards {
     @required this.hidden,
   });
 }
-
 //Special card; user decides whether they understand the card or not
 //displays a word, in japanese, user asked for word in english
 class EnglishReview implements ContentCards {
@@ -37,17 +44,16 @@ class EnglishReview implements ContentCards {
 //user decides if they understand the translation in english or not,
 class EnglishSentenceReview implements ContentCards {
   //ids of all the words in the sentence
-  final List<String> words;
+  final List<String> wordIds;
   //whether the user can see this during the lesson
   final bool hidden;
   //an optional natural translation for the sentence
   final String translation;
 
   const EnglishSentenceReview({
-    @required this.words,
+    @required this.wordIds,
     @required this.hidden,
     String translation = '',
   }) : this.translation = translation ?? '';
-
 }
  

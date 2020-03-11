@@ -37,7 +37,7 @@ class _EnglishSentenceReviewViewState extends State<EnglishSentenceReviewView> {
     final EnglishSentenceReview review =
         agenda.lessons[widget.lessonIndex].cards[widget.cardIndex];
     final deck = Provider.of<Deck>(context);
-    final List<Word> sentence = agenda.getWords(review.words);
+    final List<Word> sentence = agenda.getWords(review.wordIds);
 
     return MultiProvider(
       providers: [
@@ -63,7 +63,8 @@ class _EnglishSentenceReviewViewState extends State<EnglishSentenceReviewView> {
             )
           : Consumer<DepressableSentence>(
               builder: (_, depressableSentence, __) {
-                depressableSentence.setSentence(review.words);
+                //TODO: setting this here causes errors
+                depressableSentence.setSentence(review.wordIds);
                 List<bool> depressions = depressableSentence.depressions;
                 List<String> depressedSublist =
                     depressableSentence.depressedSubList;
@@ -103,25 +104,15 @@ class _EnglishSentenceReviewViewState extends State<EnglishSentenceReviewView> {
                       ],
                     ),
                     Text(review.translation),
-                    Row(
-                      children: <Widget>[
-                        RaisedButton(
-                          onPressed: () => agenda.removeReviewable(
-                              lessonIndex: widget.lessonIndex,
-                              cardIndex: widget.cardIndex),
-                          child: Text("I didn't understand any of that!!"),
-                        ),
-                        RaisedButton(
-                          onPressed: () => {
-                            deck.changeConfidences(
-                                words: depressedSublist, confidence: -0.25),
-                            agenda.removeReviewable(
-                                lessonIndex: widget.lessonIndex,
-                                cardIndex: widget.cardIndex)
-                          },
-                          child: Text('continue'),
-                        ),
-                      ],
+                    RaisedButton(
+                      onPressed: () => {
+                        deck.changeConfidences(
+                            words: depressedSublist, confidence: -0.25),
+                        agenda.removeReviewable(
+                            lessonIndex: widget.lessonIndex,
+                            cardIndex: widget.cardIndex)
+                      },
+                      child: Text('continue'),
                     ),
                   ],
                 );

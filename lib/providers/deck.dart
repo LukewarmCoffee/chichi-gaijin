@@ -1,5 +1,6 @@
 import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
+import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
 import 'package:flutter/cupertino.dart';
 
 class Deck with ChangeNotifier {
@@ -25,11 +26,17 @@ class Deck with ChangeNotifier {
     ),
   ];
 
+  List<EnglishSentenceReview> _sentences = [];
+
   //single list per content type ideally
   List<ContentCards> _extraReviews = [];
 
   List<Word> get deck {
     return _deck;
+  }
+
+  List<EnglishSentenceReview> get sentences {
+    return _sentences;
   }
 
   List<ContentCards> get extraReviews {
@@ -38,6 +45,18 @@ class Deck with ChangeNotifier {
 
   add(Word word) {
     _deck.add(word);
+    notifyListeners();
+  }
+
+  addSentence({
+    @required List<String> ids,
+    @required String translation,
+  }) {
+    _sentences.add(
+      EnglishSentenceReview(
+          hidden: false, translation: translation, wordIds: ids),
+    );
+
     notifyListeners();
   }
 
@@ -86,6 +105,27 @@ class Deck with ChangeNotifier {
         ],
       );
     }
+
+    notifyListeners();
+  }
+
+  //sets the learned bool to true for the given id
+  learn(String id) {
+    int index = _deck.indexWhere((wrd) => wrd.id == id);
+    Word word = _deck[index];
+
+    _deck.replaceRange(index, index + 1, [
+      Word(
+        japanese: word.japanese,
+        kana: word.kana,
+        romaji: word.romaji,
+        english: word.english,
+        definition: word.definition,
+        confidence: word.confidence,
+        learned: true,
+        id: word.id,
+      )
+    ]);
 
     notifyListeners();
   }

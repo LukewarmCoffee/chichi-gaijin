@@ -25,13 +25,14 @@ class Agenda {
         title: 'Example 2 Title',
         cards: [
           TitleCard(title: 'Example Card'),
+          BodyCard(body: 'An example body. The next card will be a new vocab'),
           VocabCard(wordId: _deck.deck[0].id, hidden: false),
           VocabCard(wordId: _deck.deck[1].id, hidden: false),
           EnglishReview(
             wordId: _deck.deck[0].id,
           ),
           EnglishSentenceReview(
-            words: [_deck.deck[1].id, _deck.deck[1].id, _deck.deck[0].id],
+            wordIds: [_deck.deck[1].id, _deck.deck[1].id, _deck.deck[0].id],
             hidden: false,
             translation: 'a natty translation',
           ),

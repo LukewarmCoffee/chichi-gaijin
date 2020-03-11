@@ -26,9 +26,9 @@ class LessonPage extends StatelessWidget {
         providers: [
           ProxyProvider3<Agenda, HiddenLessons, Deck, FinishLesson>(
             update: (_, agenda, hiddenLessons, deck, __) => FinishLesson(
-              agenda: agenda,
-              hiddenLessons: hiddenLessons,
-              deck: deck,
+              agenda,
+              deck,
+              hiddenLessons,
             ),
           ),
         ],
@@ -41,6 +41,11 @@ class LessonPage extends StatelessWidget {
                     cardIndex: cardIndex,
                     lessonIndex: lessonIndex,
                   )
+                else if (cards[cardIndex] is BodyCard)
+                  BodyCardView(
+                    cardIndex: cardIndex,
+                    lessonIndex: lessonIndex,
+                  )
                 else if (cards[cardIndex] is VocabCard &&
                     !(cards[cardIndex] as VocabCard).hidden)
                   VocabCardView(
@@ -49,11 +54,15 @@ class LessonPage extends StatelessWidget {
                   )
                 else if (cards[cardIndex] is EnglishReview)
                   EnglishReviewView(
-                      lessonIndex: lessonIndex, cardIndex: cardIndex,)
+                    lessonIndex: lessonIndex,
+                    cardIndex: cardIndex,
+                  )
                 else if (cards[cardIndex] is EnglishSentenceReview &&
                     !(cards[cardIndex] as EnglishSentenceReview).hidden)
                   EnglishSentenceReviewView(
-                      lessonIndex: lessonIndex, cardIndex: cardIndex,),
+                    lessonIndex: lessonIndex,
+                    cardIndex: cardIndex,
+                  ),
             EndCard(lessonIndex: lessonIndex),
           ],
         ),
