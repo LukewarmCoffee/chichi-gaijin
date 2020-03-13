@@ -72,7 +72,6 @@ class FinishLesson {
       final lesson = hiddenLessons.pop();
       if (lesson != null) agenda.add(lesson);
     }
-
     //returns the first lesson from hiddenLessons and adds it to agenda
   }
 }

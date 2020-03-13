@@ -2,16 +2,28 @@
 import 'package:chichi_gaijin_two/pages/home.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 import 'package:chichi_gaijin_two/providers/lessons.dart';
+import 'package:chichi_gaijin_two/providers/words.dart';
 //providers
 
 //external imports
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'models/word.dart';
 import 'providers/deck.dart';
 import 'providers/providers.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Hive.registerAdapter(WordAdapter());
+  runApp(MyApp());
+}
+
+Future _initHive() async {
+  var dir = await getApplicationDocumentsDirectory();
+  Hive.init(dir.path);
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -20,6 +32,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<Deck>(
           create: (_) => Deck(),
+        ),
+        ChangeNotifierProvider<Words>(
+          create: (_) => Words(),
         ),
         ChangeNotifierProvider<Lessons>(
           create: (_) => Lessons(),
@@ -39,7 +54,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        onGenerateRoute: (RouteSettings settings) {
+        /*onGenerateRoute: (RouteSettings settings) {
           if (settings.name == LessonPage.route)
             return MaterialPageRoute(
               builder: (_) {
@@ -52,10 +67,28 @@ class MyApp extends StatelessWidget {
             builder: (_) {
               return Home();
             },
-          );
-        },
+          );       },*/
+        initialRoute: '/',
         routes: {
-          '/': (_) => Home(),
+          '/': (context) => FutureBuilder(
+                future: _initHive(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.error != null) {
+                      print(snapshot.error);
+                      return (Scaffold(
+                        body: Center(
+                          child: Text('hive data store error'),
+                        ),
+                      ));
+                    } else {
+                      return Home();
+                    }
+                  } else {
+                    return Scaffold();
+                  }
+                },
+              )
         },
       ),
     );

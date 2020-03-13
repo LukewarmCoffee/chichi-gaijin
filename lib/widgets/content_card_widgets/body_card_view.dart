@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:chichi_gaijin_two/models/content_cards.dart';
 
-
 class BodyCardView extends StatelessWidget {
   final int lessonIndex;
   final int cardIndex;

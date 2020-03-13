@@ -55,16 +55,21 @@ class _EnglishSentenceReviewViewState extends State<EnglishSentenceReviewView> {
                       Text(sentence[i].japanese)
                   ],
                 ),
-                RaisedButton(
-                  onPressed: () => checkAnswer(),
-                  child: Text('show answer'),
+                Consumer<DepressableSentence>(
+                  builder: (_, depressableSentence, __) {
+                    return RaisedButton(
+                      onPressed: () => {
+                        depressableSentence.setSentence(review.wordIds),
+                        checkAnswer()
+                      },
+                      child: Text('show answer'),
+                    );
+                  },
                 ),
               ],
             )
           : Consumer<DepressableSentence>(
               builder: (_, depressableSentence, __) {
-                //TODO: setting this here causes errors
-                depressableSentence.setSentence(review.wordIds);
                 List<bool> depressions = depressableSentence.depressions;
                 List<String> depressedSublist =
                     depressableSentence.depressedSubList;
