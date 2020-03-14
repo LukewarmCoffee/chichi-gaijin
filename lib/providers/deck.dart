@@ -1,6 +1,5 @@
 import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
-import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
 import 'package:flutter/cupertino.dart';
 
 class Deck with ChangeNotifier {
