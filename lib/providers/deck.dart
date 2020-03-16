@@ -104,7 +104,6 @@ class Deck with ChangeNotifier {
         ],
       );
     }
-
     notifyListeners();
   }
 

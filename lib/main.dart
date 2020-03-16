@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        /*onGenerateRoute: (RouteSettings settings) {
+        onGenerateRoute: (RouteSettings settings) {
           if (settings.name == LessonPage.route)
             return MaterialPageRoute(
               builder: (_) {
@@ -67,8 +67,7 @@ class MyApp extends StatelessWidget {
             builder: (_) {
               return Home();
             },
-          );       },*/
-        initialRoute: '/',
+          );       },
         routes: {
           '/': (context) => FutureBuilder(
                 future: _initHive(),

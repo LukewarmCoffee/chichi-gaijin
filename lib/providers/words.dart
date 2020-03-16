@@ -11,10 +11,42 @@ class Words extends ChangeNotifier {
     var box = await Hive.openBox<Word>(_boxName);
 
     _words = box.values.toList();
+
     notifyListeners();
   }
 
-  Word getWord(index){
+  List<Word> get words {
+    getWords();
+    return _words;
+  }
+
+  //TODO: delte this
+  init() {
+    addWord(
+      Word(
+        japanese: 'japanese',
+        kana: 'kana',
+        romaji: 'romaji',
+        english: 'english',
+        definition: 'definition',
+        confidence: 1.0,
+        learned: false,
+      ),
+    );
+    addWord(
+      Word(
+        japanese: 'japanese2',
+        kana: 'kana',
+        romaji: 'romaji',
+        english: 'english',
+        definition: 'definition2',
+        confidence: 1.0,
+        learned: false,
+      ),
+    );
+  }
+
+  Word getWord(index) {
     return _words[index];
   }
 
@@ -28,6 +60,8 @@ class Words extends ChangeNotifier {
     await box.add(word);
 
     _words = box.values.toList();
+
+    notifyListeners();
   }
 
   void editWord({@required Word word, @required int wordKey}) async {
@@ -39,6 +73,4 @@ class Words extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  
 }
