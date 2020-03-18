@@ -12,6 +12,7 @@ class Words extends ChangeNotifier {
 
     _words = box.values.toList();
 
+
     notifyListeners();
   }
 
@@ -61,6 +62,7 @@ class Words extends ChangeNotifier {
 
     _words = box.values.toList();
 
+
     notifyListeners();
   }
 
@@ -70,6 +72,20 @@ class Words extends ChangeNotifier {
     await box.put(wordKey, word);
 
     _words = box.values.toList();
+
+
+    notifyListeners();
+  }
+
+  void deleteAll() async {
+    var box = await Hive.openBox<Word>(_boxName);
+
+    var keys =  box.keys.toList();
+
+    await box.deleteAll(keys);
+
+    _words = box.values.toList();
+
 
     notifyListeners();
   }

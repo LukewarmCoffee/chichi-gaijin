@@ -1,6 +1,7 @@
 //routes
 import 'package:chichi_gaijin_two/pages/home.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
+import 'package:chichi_gaijin_two/providers/cards.dart';
 import 'package:chichi_gaijin_two/providers/lessons.dart';
 import 'package:chichi_gaijin_two/providers/words.dart';
 //providers
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<Words>(
           create: (_) => Words(),
         ),
+        ChangeNotifierProvider<Cards>(
+          create: (_) => Cards(),
+        ),
         ChangeNotifierProvider<Lessons>(
           create: (_) => Lessons(),
         ),
@@ -67,7 +71,8 @@ class MyApp extends StatelessWidget {
             builder: (_) {
               return Home();
             },
-          );       },
+          );
+        },
         routes: {
           '/': (context) => FutureBuilder(
                 future: _initHive(),
@@ -87,7 +92,7 @@ class MyApp extends StatelessWidget {
                     return Scaffold();
                   }
                 },
-              )
+              ),
         },
       ),
     );
