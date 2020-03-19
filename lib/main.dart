@@ -1,4 +1,6 @@
 //routes
+import 'package:chichi_gaijin_two/models/content_card.dart';
+import 'package:chichi_gaijin_two/models/pontent.dart';
 import 'package:chichi_gaijin_two/pages/home.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 import 'package:chichi_gaijin_two/providers/cards.dart';
@@ -18,6 +20,11 @@ import 'providers/providers.dart';
 
 void main() {
   Hive.registerAdapter(WordAdapter());
+  Hive.registerAdapter(PontenterAdapter());
+  Hive.registerAdapter(PontentedAdapter());
+  Hive.registerAdapter(ContentCardAdapter());
+  Hive.registerAdapter(TitleCardsAdapter());
+
   runApp(MyApp());
 }
 

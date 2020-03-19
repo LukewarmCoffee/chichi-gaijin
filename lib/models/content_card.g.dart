@@ -8,7 +8,7 @@ part of 'content_card.dart';
 
 class ContentCardAdapter extends TypeAdapter<ContentCard> {
   @override
-  final typeId = 1;
+  final typeId = 15;
 
   @override
   ContentCard read(BinaryReader reader) {
@@ -16,18 +16,23 @@ class ContentCardAdapter extends TypeAdapter<ContentCard> {
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    //return ContentCard();
+    return ContentCard();
   }
 
   @override
   void write(BinaryWriter writer, ContentCard obj) {
-    writer..writeByte(0);
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.hidden);
   }
 }
 
 class TitleCardsAdapter extends TypeAdapter<TitleCards> {
   @override
-  final typeId = 2;
+  final typeId = 16;
 
   @override
   TitleCards read(BinaryReader reader) {
@@ -36,8 +41,8 @@ class TitleCardsAdapter extends TypeAdapter<TitleCards> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TitleCards(
-      title: fields[0] as String,
-      subtitle: fields[1] as String,
+      title: fields[3] as String,
+      subtitle: fields[4] as String,
     );
   }
 
@@ -45,20 +50,20 @@ class TitleCardsAdapter extends TypeAdapter<TitleCards> {
   void write(BinaryWriter writer, TitleCards obj) {
     writer
       ..writeByte(4)
-      ..writeByte(0)
-      ..write(obj.title)
-      ..writeByte(1)
-      ..write(obj.subtitle)
-      ..writeByte(2)
-      ..write(obj.id)
       ..writeByte(3)
+      ..write(obj.title)
+      ..writeByte(4)
+      ..write(obj.subtitle)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
       ..write(obj.hidden);
   }
 }
 
 class BodyCardsAdapter extends TypeAdapter<BodyCards> {
   @override
-  final typeId = 3;
+  final typeId = 17;
 
   @override
   BodyCards read(BinaryReader reader) {
@@ -67,7 +72,7 @@ class BodyCardsAdapter extends TypeAdapter<BodyCards> {
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return BodyCards(
-      body: fields[0] as String,
+      body: fields[5] as String,
     );
   }
 
@@ -75,11 +80,11 @@ class BodyCardsAdapter extends TypeAdapter<BodyCards> {
   void write(BinaryWriter writer, BodyCards obj) {
     writer
       ..writeByte(3)
-      ..writeByte(0)
+      ..writeByte(5)
       ..write(obj.body)
+      ..writeByte(0)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.hidden)
-      ..writeByte(2)
-      ..write(obj.id);
+      ..write(obj.hidden);
   }
 }

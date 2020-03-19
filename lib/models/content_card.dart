@@ -7,53 +7,48 @@ part 'content_card.g.dart';
 
 //Contains all the types of cards a user might see
 //The meat and potatoes of this app
-@HiveType(typeId: 1)
-abstract class ContentCard{
-  get id;
-  get hidden;
+@HiveType(typeId: 15)
+class ContentCard extends HiveObject{
+  @HiveField(0)
+  final String id;
+  @HiveField(1)
+  final bool hidden;
+
+  ContentCard({
+  bool hidden = false,
+    String id,
+  })  : this.hidden = hidden ?? false,
+        this.id = id ?? Uuid().v4();
 }
 
 //Displays a centered title with an optional subtitle
-@HiveType(typeId: 2)
-class TitleCards extends HiveObject implements ContentCard {
-  @HiveField(0)
-  final String title;
-  @HiveField(1)
-  final String subtitle;
-  @HiveField(2)
-  final String id;
+@HiveType(typeId: 16)
+class TitleCards extends ContentCard {
   @HiveField(3)
-  final bool hidden;
+  final String title;
+  @HiveField(4)
+  final String subtitle;
 
   TitleCards({
     @required this.title,
-    this.subtitle,
-    bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.id = id ?? Uuid().v4();
+    this.subtitle,});
+    
 }
 
 //typically used for making a paragraph of text
-@HiveType(typeId: 3)
-class BodyCards implements ContentCard {
-  @HiveField(0)
+@HiveType(typeId: 17)
+class BodyCards extends ContentCard {
+  @HiveField(5)
   final String body;
-  @HiveField(1)
-  final bool hidden;
-  @HiveField(2)
-  final String id;
 
   BodyCards({
     @required this.body,
-    bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.id = id ?? Uuid().v4();
+  });
 }
 
+
 //Special card; adds this card to deck upon finishing a lesson
-class VocabCard implements ContentCard {
+/*8class VocabCard implements ContentCard {
   //the word to be learned
   final String wordId;
   //whether the user can see this card during the lesson
@@ -101,4 +96,4 @@ class EnglishSentenceReview implements ContentCard {
   })  : this.hidden = hidden ?? false,
         this.translation = translation ?? '',
         this.id = id ?? Uuid().v4();
-}
+}*/

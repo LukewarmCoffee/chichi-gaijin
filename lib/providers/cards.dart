@@ -1,22 +1,24 @@
 import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/models/models.dart';
+import 'package:chichi_gaijin_two/models/pontent.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class Cards extends ChangeNotifier {
-  String _boxName = 'cardsBox';
+  String _boxName = 'nards';
 
-  List<ContentCard> _cards = [];
+  List<Pontent> _cards = [];
 
   void getCards() async {
-    var box = await Hive.openBox<ContentCard>(_boxName);
+    var box = await Hive.openBox<Pontent>(_boxName);
 
     _cards = box.values.toList();
+
 
     notifyListeners();
   }
 
-  List<ContentCard> get cards {
+  List<Pontent> get cards {
     getCards();
     return _cards;
   }
@@ -24,14 +26,14 @@ class Cards extends ChangeNotifier {
   //TODO: delte this
   init() {
     addCard(
-      TitleCards(title: 'Example Card'),
+      Pontenter('1', false, 'heyo'),
     );
     addCard(
-      BodyCards(body: 'An example body. The next card will be a new vocab'),
+      Pontented('1', false, 'heye'),
     );
   }
 
-  ContentCard getCard(index) {
+  Pontent getCard(index) {
     return _cards[index];
   }
 
@@ -39,18 +41,19 @@ class Cards extends ChangeNotifier {
     return _cards.length;
   }
 
-  void addCard(ContentCard card) async {
-    var box = await Hive.openBox<ContentCard>(_boxName);
+  void addCard(Pontent card) async {
+    var box = await Hive.openBox<Pontent>(_boxName);
 
     await box.add(card);
 
     _cards = box.values.toList();
 
+
     notifyListeners();
   }
 
-  void editWord({@required ContentCard card, @required int cardKey}) async {
-    var box = await Hive.openBox<ContentCard>(_boxName);
+  void editWord({@required Pontent card, @required int cardKey}) async {
+    var box = await Hive.openBox<Pontent>(_boxName);
 
     await box.put(cardKey, card);
 
@@ -60,7 +63,7 @@ class Cards extends ChangeNotifier {
   }
 
   void deleteAll() async {
-    var box = await Hive.openBox<ContentCard>(_boxName);
+    var box = await Hive.openBox<Pontent>(_boxName);
 
     var keys = box.keys.toList();
 
