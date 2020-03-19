@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProxyProvider<Words, Cards>(
           create: (_) => Cards(),
           update: (_, words, cards){
-            cards.words = words;
+            words.list.then((list) => cards.words = list);
             return cards;
           },
         ),

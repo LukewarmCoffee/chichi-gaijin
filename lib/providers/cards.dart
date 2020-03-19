@@ -8,11 +8,14 @@ import 'package:hive/hive.dart';
 class Cards extends ChangeNotifier {
   String _boxName = 'nards';
 
-  Words _words;
+  //Words _words;
+  HiveList<Word> _words; 
 
-  Words get words => _words;
+  //TODO: instead of getting words, get a hivelist that has all the words in it
 
-  set words(Words words) {
+  HiveList<Word> get words => _words;
+
+  set words(HiveList<Word> words) {
     assert(words != null);
     _words = words;
     notifyListeners();
@@ -35,24 +38,15 @@ class Cards extends ChangeNotifier {
 
   //TODO: delte this
   init() async {
-    HiveList<Word> lst;
-    await words.list.then((dddd) => lst = dddd);
-    print(lst);
+    //HiveList<Word> lst;
+    //await words.list.then((dddd) => lst = dddd);
+    //print(lst);
 
-    _words.addWord(Word(
-      japanese: 'japanese',
-      kana: 'kana',
-      romaji: 'romaji',
-      english: 'english',
-      definition: 'definition',
-      confidence: 1.0,
-      learned: false,
-    ));
     addCard(
       Pontenter('1', false, 'heyo'),
     );
     addCard(
-      Pontented('1', false, 'heye', lst),
+      Pontented('1', false, 'heye', _words),
     );
   }
 
