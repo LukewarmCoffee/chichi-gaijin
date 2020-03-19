@@ -1,3 +1,4 @@
+import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:hive/hive.dart';
 
 part 'pontent.g.dart';
@@ -31,6 +32,9 @@ class Pontented extends Pontent {
   final bool hidden;
   @HiveField(2)
   final String title;
+  @HiveField(3)
+  HiveList<Word> word; 
 
-  Pontented(this.id, this.hidden, this.title);
+  Pontented(this.id, this.hidden, this.title, this.word);
+
 }

@@ -8,7 +8,7 @@ part 'word.g.dart';
 //word != lexeme
 //as in, each word only represents a single definition and not all of its constiuents
 @HiveType(typeId: 0)
-class Word extends HiveObject{
+class Word extends HiveObject {
   //most common reading for this word; kanji included
   @HiveField(0)
   final String japanese;
@@ -47,5 +47,6 @@ class Word extends HiveObject{
   })  : this.confidence = confidence ?? 0.0,
         this.learned = learned ?? false,
         this.id = id ?? Uuid().v4();
-}
 
+  String toString() => japanese;
+}

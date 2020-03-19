@@ -1,11 +1,22 @@
 import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/models/models.dart';
 import 'package:chichi_gaijin_two/models/pontent.dart';
+import 'package:chichi_gaijin_two/providers/words.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class Cards extends ChangeNotifier {
   String _boxName = 'nards';
+
+  Words _words;
+
+  Words get words => _words;
+
+  set words(Words words) {
+    assert(words != null);
+    _words = words;
+    notifyListeners();
+  }
 
   List<Pontent> _cards = [];
 
@@ -13,7 +24,6 @@ class Cards extends ChangeNotifier {
     var box = await Hive.openBox<Pontent>(_boxName);
 
     _cards = box.values.toList();
-
 
     notifyListeners();
   }
@@ -24,12 +34,25 @@ class Cards extends ChangeNotifier {
   }
 
   //TODO: delte this
-  init() {
+  init() async {
+    HiveList<Word> lst;
+    await words.list.then((dddd) => lst = dddd);
+    print(lst);
+
+    _words.addWord(Word(
+      japanese: 'japanese',
+      kana: 'kana',
+      romaji: 'romaji',
+      english: 'english',
+      definition: 'definition',
+      confidence: 1.0,
+      learned: false,
+    ));
     addCard(
       Pontenter('1', false, 'heyo'),
     );
     addCard(
-      Pontented('1', false, 'heye'),
+      Pontented('1', false, 'heye', lst),
     );
   }
 
@@ -47,7 +70,6 @@ class Cards extends ChangeNotifier {
     await box.add(card);
 
     _cards = box.values.toList();
-
 
     notifyListeners();
   }

@@ -14,6 +14,8 @@ class Home extends StatelessWidget {
     final lessons = agenda.lessons;
     final wordsP = Provider.of<Cards>(context);
     final words = wordsP.cards;
+    final wordsa = Provider.of<Words>(context);
+    final wordsd = wordsa.words;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +28,13 @@ class Home extends StatelessWidget {
             child: ListView.builder(
               itemCount: words.length,
               itemBuilder: (BuildContext context, int wordsIndex) {
-                return Text(words[wordsIndex].id);
+                var word = words[wordsIndex];
+                if(word is Pontenter)
+                  return Text(word.extra);
+                else if(word is Pontented)
+                  return Text(word.word[0].japanese);//word.word[0].japanese);
+                else
+                  return Text('sljlnlk');
               },
             ),
           ),
@@ -53,6 +61,7 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           agenda.initData(),
+          wordsa.init(),
           wordsP.init(),
         },
       ),

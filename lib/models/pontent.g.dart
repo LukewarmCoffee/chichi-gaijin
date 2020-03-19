@@ -50,18 +50,21 @@ class PontentedAdapter extends TypeAdapter<Pontented> {
       fields[0] as String,
       fields[1] as bool,
       fields[2] as String,
+      (fields[3] as HiveList)?.castHiveList(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Pontented obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.hidden)
       ..writeByte(2)
-      ..write(obj.title);
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.word);
   }
 }

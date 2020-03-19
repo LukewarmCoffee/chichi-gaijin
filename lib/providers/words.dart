@@ -12,13 +12,18 @@ class Words extends ChangeNotifier {
 
     _words = box.values.toList();
 
-
     notifyListeners();
   }
 
   List<Word> get words {
     getWords();
     return _words;
+  }
+
+  Future<HiveList<Word>> get list async {
+    var box = await Hive.openBox<Word>(_boxName);
+    HiveList<Word> list = HiveList(box)..addAll(_words);
+    return list;
   }
 
   //TODO: delte this
@@ -62,7 +67,6 @@ class Words extends ChangeNotifier {
 
     _words = box.values.toList();
 
-
     notifyListeners();
   }
 
@@ -73,19 +77,17 @@ class Words extends ChangeNotifier {
 
     _words = box.values.toList();
 
-
     notifyListeners();
   }
 
   void deleteAll() async {
     var box = await Hive.openBox<Word>(_boxName);
 
-    var keys =  box.keys.toList();
+    var keys = box.keys.toList();
 
     await box.deleteAll(keys);
 
     _words = box.values.toList();
-
 
     notifyListeners();
   }
