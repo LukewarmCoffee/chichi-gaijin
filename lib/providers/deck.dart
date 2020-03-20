@@ -2,7 +2,7 @@ import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/cupertino.dart';
 
-class Deck with ChangeNotifier {
+/*class Deck with ChangeNotifier {
   //all the Words the user has learned
   List<Word> _deck = [
     Word(
@@ -127,4 +127,4 @@ class Deck with ChangeNotifier {
 
     notifyListeners();
   }
-}
+}*/

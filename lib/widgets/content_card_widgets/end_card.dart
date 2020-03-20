@@ -2,7 +2,7 @@ import 'package:chichi_gaijin_two/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class EndCard extends StatelessWidget {
+/*class EndCard extends StatelessWidget {
   final int lessonIndex;
 
   const EndCard({
@@ -22,4 +22,4 @@ class EndCard extends StatelessWidget {
       },
     );
   }
-}
+}*/

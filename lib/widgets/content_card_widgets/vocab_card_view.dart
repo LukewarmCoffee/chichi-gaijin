@@ -3,7 +3,7 @@ import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class VocabCardView extends StatelessWidget {
+/*class VocabCardView extends StatelessWidget {
   final int lessonIndex;
   final int cardIndex;
 
@@ -29,4 +29,4 @@ class VocabCardView extends StatelessWidget {
       ],
     );
   }
-}
+}*/

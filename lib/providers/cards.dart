@@ -1,21 +1,17 @@
-import 'package:chichi_gaijin_two/models/models.dart';
-import 'package:chichi_gaijin_two/models/pontent.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+//internal
+import 'package:chichi_gaijin_two/models/models.dart';
 
+//every single content card out there, lessons will pull from this list
 class Cards extends ChangeNotifier {
   String _boxName = 'cardsBox';
 
-  List<Pontent> _cards = [];
+  List<ContentCard> _cards = [];
 
   HiveList<Word> _words;
 
   HiveList<Word> get words => _words;
-
-  List<Pontent> get cards {
-    getCards();
-    return _cards;
-  }
 
   set words(HiveList<Word> words) {
     assert(words != null);
@@ -23,24 +19,32 @@ class Cards extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<HiveList<ContentCard>> get hiveList async {
+    getCards();
+    var box = await Hive.openBox<ContentCard>(_boxName);
+    HiveList<ContentCard> hiveList = HiveList(box)..addAll(box.values.toList());
+    return hiveList;
+  }
+
+  List<ContentCard> get cards {
+    getCards();
+    return _cards;
+  }
+
   void getCards() async {
-    var box = await Hive.openBox<Pontent>(_boxName);
+    var box = await Hive.openBox<ContentCard>(_boxName);
 
     _cards = box.values.toList();
 
     notifyListeners();
   }
 
-  Pontent getCard(index) {
-    return _cards[index];
-  }
-
   int get wordCount {
     return _cards.length;
   }
 
-  void addCard(Pontent card) async {
-    var box = await Hive.openBox<Pontent>(_boxName);
+  void addCard(ContentCard card) async {
+    var box = await Hive.openBox<ContentCard>(_boxName);
 
     await box.add(card);
 
@@ -49,8 +53,8 @@ class Cards extends ChangeNotifier {
     notifyListeners();
   }
 
-  void editWord({@required Pontent card, @required int cardKey}) async {
-    var box = await Hive.openBox<Pontent>(_boxName);
+  void editCard({@required ContentCard card, @required int cardKey}) async {
+    var box = await Hive.openBox<ContentCard>(_boxName);
 
     await box.put(cardKey, card);
 
@@ -60,7 +64,7 @@ class Cards extends ChangeNotifier {
   }
 
   void deleteAll() async {
-    var box = await Hive.openBox<Pontent>(_boxName);
+    var box = await Hive.openBox<ContentCard>(_boxName);
 
     var keys = box.keys.toList();
 
@@ -73,15 +77,11 @@ class Cards extends ChangeNotifier {
 
   //TODO: delte this
   init() async {
-    //HiveList<Word> lst;
-    //await words.list.then((dddd) => lst = dddd);
-    //print(lst);
-
     addCard(
-      Pontenter('1', false, 'heyo'),
+      TitleCard(false, title: 'title', subtitle: 'subtitle'),
     );
     addCard(
-      Pontented('1', false, 'heye', _words),
+      SentenceReviewCard(false, words: _words, translation: 'hereeeeeee'),
     );
   }
 }

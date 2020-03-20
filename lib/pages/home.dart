@@ -1,4 +1,4 @@
-import 'package:chichi_gaijin_two/models/pontent.dart';
+import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 import 'package:chichi_gaijin_two/providers/cards.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
@@ -10,12 +10,11 @@ class Home extends StatelessWidget {
   static const route = '/';
   @override
   Widget build(BuildContext context) {
-    final agenda = Provider.of<Agenda>(context);
-    final lessons = agenda.lessons;
-    final wordsP = Provider.of<Cards>(context);
-    final words = wordsP.cards;
-    final wordsa = Provider.of<Words>(context);
-    final wordsd = wordsa.words;
+    final lessonsP = Provider.of<Lessons>(context);
+    final lessons = lessonsP.lessons;
+    final cardsP = Provider.of<Cards>(context);
+    final cards = cardsP.cards;
+    final wordsP = Provider.of<Words>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -24,22 +23,36 @@ class Home extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            height: 400,
+            height: 200,
+            child: lessons.isEmpty
+                ? Container(child: Text('yo'))
+                : ListView.builder(
+                    itemCount: lessons.length,
+                    itemBuilder: (BuildContext context, int cardsIndex) {
+                      var lesson = lessons[cardsIndex];
+                      return Text(lesson.title);
+                    },
+                  ),
+          ),
+          Container(
+            height: 200,
             child: ListView.builder(
-              itemCount: words.length,
-              itemBuilder: (BuildContext context, int wordsIndex) {
-                var word = words[wordsIndex];
-                if(word is Pontenter)
-                  return Text(word.extra);
-                else if(word is Pontented)
-                  return Text(word.word[0].japanese);//word.word[0].japanese);
+              itemCount: cards.length,
+              itemBuilder: (BuildContext context, int cardsIndex) {
+                var card = cards[cardsIndex];
+                if (card is TitleCard)
+                  return Text(card.title);
+                else if (card is SentenceReviewCard)
+                  return Text(card.words.isEmpty ? 'empty' : card.words[0].japanese); //word.word[0].japanese);
                 else
                   return Text('sljlnlk');
               },
             ),
           ),
           RaisedButton(
-            onPressed: () => wordsP.deleteAll(),
+            onPressed: () => {
+              wordsP.deleteAll(),
+            },
             child: Text('delte all'),
           ),
         ],
@@ -60,9 +73,9 @@ class Home extends StatelessWidget {
       ),*/
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          agenda.initData(),
-          wordsa.init(),
           wordsP.init(),
+          cardsP.init(),
+          lessonsP.init(),
         },
       ),
     );

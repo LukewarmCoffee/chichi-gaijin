@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 //updates values in deck
-class EnglishReviewView extends StatefulWidget {
+/*class EnglishReviewView extends StatefulWidget {
   final int lessonIndex;
   final int cardIndex;
 
@@ -77,4 +77,4 @@ class _EnglishReviewViewState extends State<EnglishReviewView> {
             ],
           );
   }
-}
+}*/

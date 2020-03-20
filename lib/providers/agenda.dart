@@ -9,7 +9,7 @@ import 'lessons.dart';
 
 //This is actually a service, however  I will be treating it like the actual data
 //source for Lessons
-class Agenda {
+/*class Agenda {
   final Deck _deck;
   final Lessons _lessons;
 
@@ -64,4 +64,4 @@ class Agenda {
   add(Lesson lesson) {
     _lessons.add(lesson);
   }
-}
+}*/

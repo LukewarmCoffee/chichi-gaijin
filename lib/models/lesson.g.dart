@@ -21,13 +21,14 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       cards: (fields[1] as HiveList)?.castHiveList(),
       type: fields[2] as LessonTypes,
       finished: fields[3] as bool,
+      hidden: fields[4] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, Lesson obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -35,6 +36,8 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       ..writeByte(2)
       ..write(obj.type)
       ..writeByte(3)
-      ..write(obj.finished);
+      ..write(obj.finished)
+      ..writeByte(4)
+      ..write(obj.hidden);
   }
 }

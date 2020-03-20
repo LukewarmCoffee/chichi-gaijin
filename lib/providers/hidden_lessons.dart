@@ -3,7 +3,7 @@ import 'package:chichi_gaijin_two/models/lesson.dart';
 import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:flutter/foundation.dart';
 
-class HiddenLessons with ChangeNotifier {
+/*class HiddenLessons with ChangeNotifier {
   //Lessons to be eventually added to the Agenda
   List<Lesson> _lessons = [
     Lesson(
@@ -28,4 +28,4 @@ class HiddenLessons with ChangeNotifier {
       return null;
 
   }
-}
+}*/

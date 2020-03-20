@@ -6,7 +6,7 @@ import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/foundation.dart';
 
-class FinishLesson {
+/*class FinishLesson {
   final Agenda agenda;
   final Deck _deck;
   final HiddenLessons hiddenLessons;
@@ -74,4 +74,4 @@ class FinishLesson {
     }
     //returns the first lesson from hiddenLessons and adds it to agenda
   }
-}
+}*/

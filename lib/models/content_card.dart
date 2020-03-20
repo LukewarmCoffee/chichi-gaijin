@@ -1,9 +1,10 @@
+import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 
 part 'content_card.g.dart';
 
-class ContentCard extends HiveObject{
+class ContentCard extends HiveObject {
   bool hidden;
 }
 
@@ -46,8 +47,7 @@ class VocabCard extends ContentCard {
   final bool hidden;
   @HiveField(1)
   //the word to be learned
-
-  final HiveList word;
+  final HiveList<Word> word;
 
   VocabCard(
     this.hidden, {
@@ -63,9 +63,8 @@ class ReviewCard extends ContentCard {
   @HiveField(0)
   final bool hidden;
   @HiveField(1)
-  //the word to be learned
-
-  final HiveList word;
+  //the word to be learne
+  final HiveList<Word> word;
 
   ReviewCard(
     this.hidden, {
@@ -81,7 +80,7 @@ class SentenceReviewCard extends ContentCard {
   final bool hidden;
   //ids of all the words in the sentence
   @HiveField(1)
-  final HiveList words;
+  final HiveList<Word> words;
   //an optional natural translation for the sentence
   @HiveField(2)
   final String translation;

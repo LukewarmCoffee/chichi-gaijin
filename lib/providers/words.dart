@@ -20,9 +20,20 @@ class Words extends ChangeNotifier {
     return _words;
   }
 
-  Future<HiveList<Word>> get list async {
+  /*Future<List<Word>> get words async {
     var box = await Hive.openBox<Word>(_boxName);
-    HiveList<Word> list = HiveList(box)..addAll(_words);
+
+    _words = box.values.toList();
+
+    notifyListeners();
+
+    return _words;
+  }*/
+
+  Future<HiveList<Word>> get hiveList async {
+    getWords();
+    var box = await Hive.openBox<Word>(_boxName);
+    HiveList<Word> list = HiveList(box)..addAll(box.values.toList());
     return list;
   }
 
@@ -66,7 +77,7 @@ class Words extends ChangeNotifier {
     notifyListeners();
   }
 
-    //TODO: delte this
+  //TODO: delte this
   init() {
     addWord(
       Word(

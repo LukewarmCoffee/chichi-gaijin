@@ -6,7 +6,7 @@ import 'package:chichi_gaijin_two/widgets/content_card_widgets/english_sentence_
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LessonPage extends StatelessWidget {
+/*class LessonPage extends StatelessWidget {
   static const route = '/lesson';
   final int lessonIndex;
 
@@ -69,4 +69,4 @@ class LessonPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/

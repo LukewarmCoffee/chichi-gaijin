@@ -19,11 +19,14 @@ class Lesson {
   //sets to true when user completes the lesson
   @HiveField(3)
   final bool finished;
+  @HiveField(4)
+  final bool hidden;
 
   const Lesson({
     @required this.title,
     @required this.cards,
     @required this.type,
     @required this.finished,
+    @required this.hidden,
   });
 }
