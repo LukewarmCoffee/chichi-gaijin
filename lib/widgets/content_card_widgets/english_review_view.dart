@@ -1,4 +1,3 @@
-import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/providers/agenda.dart';
 import 'package:chichi_gaijin_two/providers/deck.dart';
 import 'package:flutter/material.dart';

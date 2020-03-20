@@ -14,7 +14,7 @@ class Words extends ChangeNotifier {
 
     notifyListeners();
   }
-
+  
   List<Word> get words {
     getWords();
     return _words;
@@ -31,7 +31,6 @@ class Words extends ChangeNotifier {
   }*/
 
   Future<HiveList<Word>> get hiveList async {
-    getWords();
     var box = await Hive.openBox<Word>(_boxName);
     HiveList<Word> list = HiveList(box)..addAll(box.values.toList());
     return list;

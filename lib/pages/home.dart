@@ -1,8 +1,8 @@
+import 'package:chichi_gaijin_two/data/data.dart';
 import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
-import 'package:chichi_gaijin_two/providers/cards.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
-import 'package:chichi_gaijin_two/providers/words.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

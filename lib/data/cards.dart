@@ -20,7 +20,6 @@ class Cards extends ChangeNotifier {
   }
 
   Future<HiveList<ContentCard>> get hiveList async {
-    getCards();
     var box = await Hive.openBox<ContentCard>(_boxName);
     HiveList<ContentCard> hiveList = HiveList(box)..addAll(box.values.toList());
     return hiveList;

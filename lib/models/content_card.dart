@@ -45,8 +45,8 @@ class VocabCard extends ContentCard {
   @override
   @HiveField(0)
   final bool hidden;
-  @HiveField(1)
   //the word to be learned
+  @HiveField(1)
   final HiveList<Word> word;
 
   VocabCard(
@@ -62,8 +62,8 @@ class ReviewCard extends ContentCard {
   @override
   @HiveField(0)
   final bool hidden;
+  //the word to be reviewed
   @HiveField(1)
-  //the word to be learne
   final HiveList<Word> word;
 
   ReviewCard(

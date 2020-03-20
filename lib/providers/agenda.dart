@@ -1,11 +1,9 @@
-import 'package:chichi_gaijin_two/models/content_cards.dart';
 import 'package:chichi_gaijin_two/models/lesson.dart';
 import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
 
 import 'deck.dart';
-import 'lessons.dart';
 
 //This is actually a service, however  I will be treating it like the actual data
 //source for Lessons

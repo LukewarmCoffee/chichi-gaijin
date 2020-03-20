@@ -1,11 +1,5 @@
 //routes
-import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/pages/home.dart';
-import 'package:chichi_gaijin_two/pages/lesson_page.dart';
-import 'package:chichi_gaijin_two/providers/cards.dart';
-import 'package:chichi_gaijin_two/providers/lessons.dart';
-import 'package:chichi_gaijin_two/providers/words.dart';
-//providers
 
 //external imports
 import 'package:flutter/material.dart';
@@ -13,11 +7,9 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
-import 'models/lesson.dart';
-import 'models/lesson_types.dart';
-import 'models/word.dart';
-import 'providers/deck.dart';
-import 'providers/providers.dart';
+import 'data/data.dart';
+import 'models/models.dart';
+
 
 void main() {
   Hive.registerAdapter(WordAdapter());
