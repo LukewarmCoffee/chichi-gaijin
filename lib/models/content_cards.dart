@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+/*import 'package:flutter/foundation.dart';
 //Contains all the types of cards a user might see
 //The meat and potatoes of this app
 abstract class ContentCards {}
@@ -55,5 +55,5 @@ class EnglishSentenceReview implements ContentCards {
     @required this.hidden,
     String translation = '',
   }) : this.translation = translation ?? '';
-}
+}*/
  

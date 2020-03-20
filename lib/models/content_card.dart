@@ -1,99 +1,94 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:uuid/uuid.dart';
 
 part 'content_card.g.dart';
 
-
-//Contains all the types of cards a user might see
-//The meat and potatoes of this app
-@HiveType(typeId: 15)
 class ContentCard extends HiveObject{
-  @HiveField(0)
-  final String id;
-  @HiveField(1)
-  final bool hidden;
-
-  ContentCard({
-  bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.id = id ?? Uuid().v4();
+  bool hidden;
 }
 
-//Displays a centered title with an optional subtitle
-@HiveType(typeId: 16)
-class TitleCards extends ContentCard {
-  @HiveField(3)
+@HiveType(typeId: 50)
+class TitleCard extends ContentCard {
+  @override
+  @HiveField(0)
+  final bool hidden;
+  @HiveField(2)
   final String title;
-  @HiveField(4)
+  @HiveField(3)
   final String subtitle;
 
-  TitleCards({
+  TitleCard(
+    this.hidden, {
     @required this.title,
-    this.subtitle,});
-    
+    this.subtitle,
+  });
 }
 
-//typically used for making a paragraph of text
-@HiveType(typeId: 17)
-class BodyCards extends ContentCard {
-  @HiveField(5)
+@HiveType(typeId: 51)
+class BodyCard extends ContentCard {
+  @override
+  @HiveField(0)
+  final bool hidden;
+  @HiveField(1)
   final String body;
 
-  BodyCards({
+  BodyCard(
+    this.hidden, {
     @required this.body,
   });
 }
 
-
 //Special card; adds this card to deck upon finishing a lesson
-/*8class VocabCard implements ContentCard {
-  //the word to be learned
-  final String wordId;
-  //whether the user can see this card during the lesson
+@HiveType(typeId: 52)
+class VocabCard extends ContentCard {
+  @override
+  @HiveField(0)
   final bool hidden;
-  final String id;
+  @HiveField(1)
+  //the word to be learned
 
-  VocabCard({
-    @required this.wordId,
-    bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.id = id ?? Uuid().v4();
+  final HiveList word;
+
+  VocabCard(
+    this.hidden, {
+    @required this.word,
+  });
 }
 
 //Special card; user decides whether they understand the card or not
 //displays a word, in japanese, user asked for word in english
-class EnglishReview implements ContentCard {
-  final String wordId;
+@HiveType(typeId: 53)
+class ReviewCard extends ContentCard {
+  @override
+  @HiveField(0)
   final bool hidden;
-  final String id;
+  @HiveField(1)
+  //the word to be learned
 
-  EnglishReview({
-    @required this.wordId,
-    bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.id = id ?? Uuid().v4();
+  final HiveList word;
+
+  ReviewCard(
+    this.hidden, {
+    @required this.word,
+  });
 }
 
 //user decides if they understand the translation in english or not,
-class EnglishSentenceReview implements ContentCard {
-  //ids of all the words in the sentence
-  final List<String> wordIds;
-  //whether the user can see this during the lesson
+@HiveType(typeId: 54)
+class SentenceReviewCard extends ContentCard {
+  @override
+  @HiveField(0)
   final bool hidden;
+  //ids of all the words in the sentence
+  @HiveField(1)
+  final HiveList words;
   //an optional natural translation for the sentence
+  @HiveField(2)
   final String translation;
-  final String id;
 
-  EnglishSentenceReview({
-    @required this.wordIds,
-    String translation = '',
-    bool hidden = false,
-    String id,
-  })  : this.hidden = hidden ?? false,
-        this.translation = translation ?? '',
-        this.id = id ?? Uuid().v4();
-}*/
+  SentenceReviewCard(
+    this.hidden, {
+    @required this.words,
+    this.translation,
+  });
+}

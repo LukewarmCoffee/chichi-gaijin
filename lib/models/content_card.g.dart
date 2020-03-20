@@ -6,85 +6,143 @@ part of 'content_card.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ContentCardAdapter extends TypeAdapter<ContentCard> {
+class TitleCardAdapter extends TypeAdapter<TitleCard> {
   @override
-  final typeId = 15;
+  final typeId = 50;
 
   @override
-  ContentCard read(BinaryReader reader) {
+  TitleCard read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ContentCard();
+    return TitleCard(
+      fields[0] as bool,
+      title: fields[2] as String,
+      subtitle: fields[3] as String,
+    );
   }
 
   @override
-  void write(BinaryWriter writer, ContentCard obj) {
+  void write(BinaryWriter writer, TitleCard obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.hidden)
+      ..writeByte(2)
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.subtitle);
+  }
+}
+
+class BodyCardAdapter extends TypeAdapter<BodyCard> {
+  @override
+  final typeId = 51;
+
+  @override
+  BodyCard read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return BodyCard(
+      fields[0] as bool,
+      body: fields[1] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, BodyCard obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.hidden)
       ..writeByte(1)
-      ..write(obj.hidden);
+      ..write(obj.body);
   }
 }
 
-class TitleCardsAdapter extends TypeAdapter<TitleCards> {
+class VocabCardAdapter extends TypeAdapter<VocabCard> {
   @override
-  final typeId = 16;
+  final typeId = 52;
 
   @override
-  TitleCards read(BinaryReader reader) {
+  VocabCard read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TitleCards(
-      title: fields[3] as String,
-      subtitle: fields[4] as String,
+    return VocabCard(
+      fields[0] as bool,
+      word: (fields[1] as HiveList)?.castHiveList(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, TitleCards obj) {
+  void write(BinaryWriter writer, VocabCard obj) {
     writer
-      ..writeByte(4)
-      ..writeByte(3)
-      ..write(obj.title)
-      ..writeByte(4)
-      ..write(obj.subtitle)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.hidden)
       ..writeByte(1)
-      ..write(obj.hidden);
+      ..write(obj.word);
   }
 }
 
-class BodyCardsAdapter extends TypeAdapter<BodyCards> {
+class ReviewCardAdapter extends TypeAdapter<ReviewCard> {
   @override
-  final typeId = 17;
+  final typeId = 53;
 
   @override
-  BodyCards read(BinaryReader reader) {
+  ReviewCard read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return BodyCards(
-      body: fields[5] as String,
+    return ReviewCard(
+      fields[0] as bool,
+      word: (fields[1] as HiveList)?.castHiveList(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, BodyCards obj) {
+  void write(BinaryWriter writer, ReviewCard obj) {
+    writer
+      ..writeByte(2)
+      ..writeByte(0)
+      ..write(obj.hidden)
+      ..writeByte(1)
+      ..write(obj.word);
+  }
+}
+
+class SentenceReviewCardAdapter extends TypeAdapter<SentenceReviewCard> {
+  @override
+  final typeId = 54;
+
+  @override
+  SentenceReviewCard read(BinaryReader reader) {
+    var numOfFields = reader.readByte();
+    var fields = <int, dynamic>{
+      for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SentenceReviewCard(
+      fields[0] as bool,
+      words: (fields[1] as HiveList)?.castHiveList(),
+      translation: fields[2] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, SentenceReviewCard obj) {
     writer
       ..writeByte(3)
-      ..writeByte(5)
-      ..write(obj.body)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.hidden)
       ..writeByte(1)
-      ..write(obj.hidden);
+      ..write(obj.words)
+      ..writeByte(2)
+      ..write(obj.translation);
   }
 }

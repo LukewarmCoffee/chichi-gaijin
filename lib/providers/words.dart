@@ -26,32 +26,6 @@ class Words extends ChangeNotifier {
     return list;
   }
 
-  //TODO: delte this
-  init() {
-    addWord(
-      Word(
-        japanese: 'japanese',
-        kana: 'kana',
-        romaji: 'romaji',
-        english: 'english',
-        definition: 'definition',
-        confidence: 1.0,
-        learned: false,
-      ),
-    );
-    addWord(
-      Word(
-        japanese: 'japanese2',
-        kana: 'kana',
-        romaji: 'romaji',
-        english: 'english',
-        definition: 'definition2',
-        confidence: 1.0,
-        learned: false,
-      ),
-    );
-  }
-
   Word getWord(index) {
     return _words[index];
   }
@@ -90,5 +64,31 @@ class Words extends ChangeNotifier {
     _words = box.values.toList();
 
     notifyListeners();
+  }
+
+    //TODO: delte this
+  init() {
+    addWord(
+      Word(
+        japanese: 'japanese',
+        kana: 'kana',
+        romaji: 'romaji',
+        english: 'english',
+        definition: 'definition',
+        confidence: 1.0,
+        learned: false,
+      ),
+    );
+    addWord(
+      Word(
+        japanese: 'japanese2',
+        kana: 'kana',
+        romaji: 'romaji',
+        english: 'english',
+        definition: 'definition2',
+        confidence: 1.0,
+        learned: false,
+      ),
+    );
   }
 }

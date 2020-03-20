@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:uuid/uuid.dart';
 
 part 'word.g.dart';
 
@@ -31,9 +30,6 @@ class Word extends HiveObject {
   //if the user has learned this word
   @HiveField(6)
   final bool learned;
-  //UUid
-  @HiveField(7)
-  final String id;
 
   Word({
     @required this.japanese,
@@ -45,8 +41,7 @@ class Word extends HiveObject {
     bool learned = false,
     String id,
   })  : this.confidence = confidence ?? 0.0,
-        this.learned = learned ?? false,
-        this.id = id ?? Uuid().v4();
+        this.learned = learned ?? false;
 
   String toString() => japanese;
 }

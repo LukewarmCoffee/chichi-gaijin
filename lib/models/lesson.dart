@@ -1,22 +1,29 @@
 //external imports
+import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hive/hive.dart';
 //internal imports
-import './content_cards.dart';
 import './lesson_types.dart';
 
+part 'lesson.g.dart';
+
+@HiveType(typeId: 10)
 class Lesson {
+  @HiveField(0)
   final String title;
-  final List<ContentCards> cards;
+  @HiveField(1)
+  final HiveList<ContentCard> cards;
   //enum
+  @HiveField(2)
   final LessonTypes type;
   //sets to true when user completes the lesson
+  @HiveField(3)
   final bool finished;
 
   const Lesson({
     @required this.title,
     @required this.cards,
     @required this.type,
-    bool finished = false,
-  }) : this.finished = finished ?? false;
+    @required this.finished,
+  });
 }
-

@@ -28,7 +28,7 @@ class WordAdapter extends TypeAdapter<Word> {
   @override
   void write(BinaryWriter writer, Word obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.japanese)
       ..writeByte(1)
@@ -42,8 +42,6 @@ class WordAdapter extends TypeAdapter<Word> {
       ..writeByte(5)
       ..write(obj.confidence)
       ..writeByte(6)
-      ..write(obj.learned)
-      ..writeByte(7)
-      ..write(obj.id);
+      ..write(obj.learned);
   }
 }
