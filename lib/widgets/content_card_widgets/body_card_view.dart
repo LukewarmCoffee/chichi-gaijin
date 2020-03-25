@@ -1,22 +1,15 @@
-import 'package:chichi_gaijin_two/providers/agenda.dart';
+import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-/*class BodyCardView extends StatelessWidget {
-  final int lessonIndex;
-  final int cardIndex;
+class BodyCardView extends StatelessWidget {
+  final BodyCard card;
 
-  const BodyCardView({
-    @required this.lessonIndex,
-    @required this.cardIndex,
-  });
+  const BodyCardView(this.card);
 
   @override
   Widget build(BuildContext context) {
-    final agenda = Provider.of<Agenda>(context);
-    final BodyCard card = agenda.lessons[lessonIndex].cards[cardIndex];
     return Center(
       child: Text(card.body),
     );
   }
-}*/
+}

@@ -1,19 +1,13 @@
-import 'package:chichi_gaijin_two/providers/providers.dart';
+import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-/*class TitleCardView extends StatelessWidget {
-  final int lessonIndex;
-  final int cardIndex;
+class TitleCardView extends StatelessWidget {
+  final TitleCard card;
 
-  const TitleCardView({
-    @required this.lessonIndex,
-    @required this.cardIndex,
-  });
+  const TitleCardView(this.card);
+
   @override
   Widget build(BuildContext context) {
-    final agenda = Provider.of<Agenda>(context);
-    final TitleCard card = agenda.lessons[lessonIndex].cards[cardIndex];
     return card.subtitle == null
         ? Text(card.title)
         : Column(
@@ -23,4 +17,4 @@ import 'package:provider/provider.dart';
             ],
           );
   }
-}*/
+}

@@ -4,6 +4,7 @@ import 'package:chichi_gaijin_two/pages/lesson_page.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
 
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
@@ -15,6 +16,8 @@ class Home extends StatelessWidget {
     final cardsP = Provider.of<Cards>(context);
     final cards = cardsP.cards;
     final wordsP = Provider.of<Words>(context);
+    //TODO: wont load without, but 
+    Hive.openBox(Words.boxName);
 
     return Scaffold(
       appBar: AppBar(

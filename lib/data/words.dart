@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class Words extends ChangeNotifier {
-  String _boxName = 'wordsBox';
+  static const boxName = 'wordsBox';
 
   List<Word> _words = [];
 
   void getWords() async {
-    var box = await Hive.openBox<Word>(_boxName);
+    var box = await Hive.openBox<Word>(boxName);
 
     _words = box.values.toList();
 
@@ -31,7 +31,7 @@ class Words extends ChangeNotifier {
   }*/
 
   Future<HiveList<Word>> get hiveList async {
-    var box = await Hive.openBox<Word>(_boxName);
+    var box = await Hive.openBox<Word>(boxName);
     HiveList<Word> list = HiveList(box)..addAll(box.values.toList());
     return list;
   }
@@ -45,7 +45,7 @@ class Words extends ChangeNotifier {
   }
 
   void addWord(Word word) async {
-    var box = await Hive.openBox<Word>(_boxName);
+    var box = await Hive.openBox<Word>(boxName);
 
     await box.add(word);
 
@@ -55,7 +55,7 @@ class Words extends ChangeNotifier {
   }
 
   void editWord({@required Word word, @required int wordKey}) async {
-    var box = await Hive.openBox<Word>(_boxName);
+    var box = await Hive.openBox<Word>(boxName);
 
     await box.put(wordKey, word);
 
@@ -65,7 +65,7 @@ class Words extends ChangeNotifier {
   }
 
   void deleteAll() async {
-    var box = await Hive.openBox<Word>(_boxName);
+    var box = await Hive.openBox<Word>(boxName);
 
     var keys = box.keys.toList();
 

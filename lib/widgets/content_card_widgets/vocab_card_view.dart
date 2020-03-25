@@ -1,31 +1,27 @@
+import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/*class VocabCardView extends StatelessWidget {
-  final int lessonIndex;
-  final int cardIndex;
+class VocabCardView extends StatelessWidget {
+  final VocabCard card;
 
-  const VocabCardView({
-    @required this.cardIndex,
-    @required this.lessonIndex,
-  });
+  const VocabCardView(this.card);
 
   @override
   Widget build(BuildContext context) {
-    final agenda = Provider.of<Agenda>(context);
-    final VocabCard card = agenda.lessons[lessonIndex].cards[cardIndex];
-    final word = agenda.getWord(card.wordId);
-    return Column(
-      children: <Widget>[
-        Text(word.japanese),
-        Text(word.kana),
-        Text(word.romaji),
-        Text(word.english),
-        Text(word.definition),
-        Text(word.confidence.toString()),
-        Text(word.learned.toString()),
-      ],
-    );
+    return card.word.isNotEmpty
+        ? Column(
+            children: <Widget>[
+              Text(card.word[0].japanese),
+              Text(card.word[0].kana),
+              Text(card.word[0].romaji),
+              Text(card.word[0].english),
+              Text(card.word[0].definition),
+              Text(card.word[0].confidence.toString()),
+              Text(card.word[0].learned.toString()),
+            ],
+          )
+        : Text('empty vocab card');
   }
-}*/
+}

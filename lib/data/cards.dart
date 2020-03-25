@@ -5,7 +5,7 @@ import 'package:chichi_gaijin_two/models/models.dart';
 
 //every single content card out there, lessons will pull from this list
 class Cards extends ChangeNotifier {
-  String _boxName = 'cardsBox';
+  static const String _boxName = 'cardsBox';
 
   List<ContentCard> _cards = [];
 
@@ -80,7 +80,7 @@ class Cards extends ChangeNotifier {
       TitleCard(false, title: 'title', subtitle: 'subtitle'),
     );
     addCard(
-      SentenceReviewCard(false, words: _words, translation: 'hereeeeeee'),
+      ReviewCard(false, word: _words),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
 class Lessons with ChangeNotifier {
-  String _boxName = 'lessonsBox';
+  static const String _boxName = 'lessonsBox';
 
   List<Lesson> _lessons = [];
 
