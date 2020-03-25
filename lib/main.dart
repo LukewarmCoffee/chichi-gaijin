@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 
 import 'data/data.dart';
 import 'models/models.dart';
+import 'pages/pages.dart';
 
 
 void main() {
@@ -72,14 +73,14 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         onGenerateRoute: (RouteSettings settings) {
-          /*if (settings.name == LessonPage.route)
+          if (settings.name == LessonPage.route)
             return MaterialPageRoute(
               builder: (_) {
                 return LessonPage(
                   lessonIndex: settings.arguments,
                 );
               },
-            );*/
+            );
           return MaterialPageRoute(
             builder: (_) {
               return Home();

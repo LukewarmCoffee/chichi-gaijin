@@ -23,6 +23,22 @@ class Home extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
+            height: 400,
+            child: ListView.builder(
+              itemCount: lessons.length,
+              itemBuilder: (BuildContext context, int lessonIndex) {
+                return RaisedButton(
+                  onPressed: () => Navigator.pushNamed(
+                    context,
+                    LessonPage.route,
+                    arguments: lessonIndex,
+                  ),
+                  child: Text(lessons[lessonIndex].title),
+                );
+              },
+            ),
+          ),
+          /*Container(
             height: 200,
             child: lessons.isEmpty
                 ? Container(child: Text('yo'))
@@ -43,34 +59,24 @@ class Home extends StatelessWidget {
                 if (card is TitleCard)
                   return Text(card.title);
                 else if (card is SentenceReviewCard)
-                  return Text(card.words.isEmpty ? 'empty' : card.words[0].japanese); //word.word[0].japanese);
+                  return Text(card.words.isEmpty
+                      ? 'empty'
+                      : card.words[0].japanese); //word.word[0].japanese);
                 else
                   return Text('sljlnlk');
               },
             ),
-          ),
+          ),*/
           RaisedButton(
             onPressed: () => {
               wordsP.deleteAll(),
+              lessonsP.deleteAll(),
+              cardsP.deleteAll(),
             },
             child: Text('delte all'),
           ),
         ],
       ),
-
-      /*ListView.builder(
-        itemCount: lessons.length,
-        itemBuilder: (BuildContext context, int lessonIndex) {
-          return RaisedButton(
-            onPressed: () => Navigator.pushNamed(
-              context,
-              LessonPage.route,
-              arguments: lessonIndex,
-            ),
-            child: Text(lessons[lessonIndex].title),
-          );
-        },
-      ),*/
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           wordsP.init(),

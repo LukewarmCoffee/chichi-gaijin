@@ -1,3 +1,6 @@
+import 'package:chichi_gaijin_two/data/cards.dart';
+import 'package:chichi_gaijin_two/data/lessons.dart';
+import 'package:chichi_gaijin_two/models/models.dart';
 import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:chichi_gaijin_two/services/services.dart';
 import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
@@ -5,7 +8,7 @@ import 'package:chichi_gaijin_two/widgets/content_card_widgets/english_sentence_
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/*class LessonPage extends StatelessWidget {
+class LessonPage extends StatelessWidget {
   static const route = '/lesson';
   final int lessonIndex;
 
@@ -14,58 +17,117 @@ import 'package:provider/provider.dart';
   });
   @override
   Widget build(BuildContext context) {
-    final agenda = Provider.of<Agenda>(context);
-    final lesson = agenda.lessons[lessonIndex];
+    final provider = Provider.of<Lessons>(context);
+    final lesson = provider.lessons[lessonIndex];
     final cards = lesson.cards;
     return Scaffold(
       appBar: AppBar(
         title: Text(lesson.title),
       ),
-      body: MultiProvider(
+      body: PageView.builder(
+        itemCount: cards.length,
+        itemBuilder: (BuildContext context, int cardIndex) {
+          if (cards[cardIndex] is TitleCard)
+            return Text((cards[cardIndex] as TitleCard).title);
+          /*TitleCardView(
+                    cardIndex: cardIndex,
+                    lessonIndex: lessonIndex,
+                  )*/
+          else if (cards[cardIndex] is BodyCard)
+            return Text((cards[cardIndex] as BodyCard).body);
+          /*BodyCardView(
+                    cardIndex: cardIndex,
+                    lessonIndex: lessonIndex,
+                  )*/
+          else if (cards[cardIndex] is VocabCard &&
+              !(cards[cardIndex] as VocabCard).hidden)
+            return Text(
+                'sss'); //(cards[cardIndex] as VocabCard).word[0].romaji)
+
+          /*VocabCardView(
+                    lessonIndex: lessonIndex,
+                    cardIndex: cardIndex,
+                  )*/
+          else if (cards[cardIndex] is ReviewCard &&
+              !(cards[cardIndex] as ReviewCard).hidden)
+            return Text(
+                'ddd'); //(cards[cardIndex] as ReviewCard).word[0].romaji)
+
+          /*EnglishReviewView(
+                    lessonIndex: lessonIndex,
+                    cardIndex: cardIndex,
+                  )*/
+          else if (cards[cardIndex] is SentenceReviewCard &&
+              !(cards[cardIndex] as SentenceReviewCard).hidden)
+            return Text((cards[cardIndex] as SentenceReviewCard).words.isEmpty
+                      ? 'empty'
+                      : (cards[cardIndex] as SentenceReviewCard).words[0].japanese);
+          else
+            return Text(
+                (cards[cardIndex] as SentenceReviewCard).words[0].romaji);
+
+          /*EnglishSentenceReviewView(
+                    lessonIndex: lessonIndex,
+                    cardIndex: cardIndex,
+                  ),*/
+        },
+
+        /*MultiProvider(
         providers: [
-          ProxyProvider3<Agenda, HiddenLessons, Deck, FinishLesson>(
+          /*ProxyProvider3<Agenda, HiddenLessons, Deck, FinishLesson>(
             update: (_, agenda, hiddenLessons, deck, __) => FinishLesson(
               agenda,
               deck,
               hiddenLessons,
             ),
-          ),
+          ),*/
         ],
-        child: PageView(
+        child: 
+        ),*/
+
+        /*PageView(
           children: <Widget>[
             for (int cardIndex = 0; cardIndex < cards.length; cardIndex++)
               if (cards.length != cardIndex)
                 if (cards[cardIndex] is TitleCard)
-                  TitleCardView(
+                  Text((cards[cardIndex] as TitleCard).title)
+                  /*TitleCardView(
                     cardIndex: cardIndex,
                     lessonIndex: lessonIndex,
-                  )
+                  )*/
                 else if (cards[cardIndex] is BodyCard)
-                  BodyCardView(
+                  Text((cards[cardIndex] as BodyCard).body)
+                  /*BodyCardView(
                     cardIndex: cardIndex,
                     lessonIndex: lessonIndex,
-                  )
+                  )*/
                 else if (cards[cardIndex] is VocabCard &&
                     !(cards[cardIndex] as VocabCard).hidden)
-                  VocabCardView(
+                                      Text('sss')//(cards[cardIndex] as VocabCard).word[0].romaji)
+
+                  /*VocabCardView(
                     lessonIndex: lessonIndex,
                     cardIndex: cardIndex,
-                  )
-                else if (cards[cardIndex] is EnglishReview)
-                  EnglishReviewView(
+                  )*/
+                else if (cards[cardIndex] is ReviewCard && !(cards[cardIndex] as ReviewCard).hidden)
+                                                      Text('ddd')//(cards[cardIndex] as ReviewCard).word[0].romaji)
+
+                  /*EnglishReviewView(
                     lessonIndex: lessonIndex,
                     cardIndex: cardIndex,
-                  )
-                else if (cards[cardIndex] is EnglishSentenceReview &&
-                    !(cards[cardIndex] as EnglishSentenceReview).hidden)
-                  EnglishSentenceReviewView(
+                  )*/
+                else if (cards[cardIndex] is SentenceReviewCard &&
+                    !(cards[cardIndex] as SentenceReviewCard).hidden)
+                                                          Text('cc')//(cards[cardIndex] as SentenceReviewCard).words[0].romaji)
+
+                  /*EnglishSentenceReviewView(
                     lessonIndex: lessonIndex,
                     cardIndex: cardIndex,
-                  ),
-            EndCard(lessonIndex: lessonIndex),
+                  ),*/
+            //EndCard(lessonIndex: lessonIndex),
           ],
-        ),
+        ),*/
       ),
     );
   }
-}*/
+}
