@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
     final cards = cardsP.cards;
     final wordsP = Provider.of<Words>(context);
     //TODO: wont load without, but 
-    Hive.openBox(Words.boxName);
+    //Hive.openBox(Words.boxName);
 
     return Scaffold(
       appBar: AppBar(
