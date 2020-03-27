@@ -76,11 +76,14 @@ class Cards extends ChangeNotifier {
 
   //TODO: delte this
   init() async {
-    addCard(
+    /*addCard(
       TitleCard(false, title: 'title', subtitle: 'subtitle'),
     );
     addCard(
       ReviewCard(false, word: _words),
+    );*/
+    addCard(
+      SentenceReviewCard(false, words: _words, translation: 'translation'),
     );
   }
 }

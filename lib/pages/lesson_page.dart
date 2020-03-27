@@ -26,7 +26,7 @@ class LessonPage extends StatelessWidget {
     else if (card is ReviewCard && !card.hidden)
       return ReviewView(card);
     else if (card is SentenceReviewCard && !card.hidden)
-      return Text(card.words.isEmpty ? 'empty' : card.words[0].japanese);
+      return SentenceReviewView(card);
     else
       return Text('ayooo');
   }
