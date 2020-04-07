@@ -1,6 +1,3 @@
-//routes
-import 'package:chichi_gaijin_two/pages/home.dart';
-
 //external imports
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -10,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'data/data.dart';
 import 'models/models.dart';
 import 'pages/pages.dart';
-
 
 void main() {
   Hive.registerAdapter(WordAdapter());
@@ -107,6 +103,7 @@ class MyApp extends StatelessWidget {
                   }
                 },
               ),
+          CreateLesson.route: (_) => CreateLesson(),
         },
       ),
     );

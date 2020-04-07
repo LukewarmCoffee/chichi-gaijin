@@ -1,5 +1,6 @@
 import 'package:chichi_gaijin_two/data/data.dart';
 import 'package:chichi_gaijin_two/pages/lesson_page.dart';
+import 'package:chichi_gaijin_two/pages/pages.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -50,9 +51,10 @@ class Home extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          wordsP.init(),
+          Navigator.pushNamed(context, CreateLesson.route),
+          /*wordsP.init(),
           cardsP.init(),
-          lessonsP.init(),
+          lessonsP.init(),*/
         },
       ),
     );
