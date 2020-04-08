@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          Navigator.pushNamed(context, CreateLesson.route),
+          Navigator.pushNamed(context, CreatePage.route),
           /*wordsP.init(),
           cardsP.init(),
           lessonsP.init(),*/

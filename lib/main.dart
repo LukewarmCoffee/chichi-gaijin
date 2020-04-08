@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'data/data.dart';
 import 'models/models.dart';
 import 'pages/pages.dart';
+import 'services/services.dart';
 
 void main() {
   Hive.registerAdapter(WordAdapter());
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        //Data
         ChangeNotifierProvider<Words>(
           create: (_) => Words(),
         ),
@@ -50,18 +52,10 @@ class MyApp extends StatelessWidget {
             return lessons;
           },
         ),
-        /*ChangeNotifierProvider<Deck>(
-          create: (_) => Deck(),
-        ),*/
-        /*ChangeNotifierProvider<HiddenLessons>(
-          create: (_) => HiddenLessons(),
+        //Services
+        ChangeNotifierProvider<CreateLesson>(
+          create: (_) => CreateLesson(),
         ),
-        ProxyProvider2<Deck, Lessons, Agenda>(
-          update: (_, deck, lessons, __) => Agenda(
-            deck,
-            lessons,
-          ),
-        ),*/
       ],
       child: MaterialApp(
         title: 'ChiChi Gaijin',
@@ -103,7 +97,7 @@ class MyApp extends StatelessWidget {
                   }
                 },
               ),
-          CreateLesson.route: (_) => CreateLesson(),
+          CreatePage.route: (_) => CreatePage(),
         },
       ),
     );
