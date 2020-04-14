@@ -1,12 +1,9 @@
-import 'package:chichi_gaijin_two/data/cards.dart';
-import 'package:chichi_gaijin_two/data/lessons.dart';
-import 'package:chichi_gaijin_two/models/models.dart';
-import 'package:chichi_gaijin_two/providers/providers.dart';
-import 'package:chichi_gaijin_two/services/services.dart';
-import 'package:chichi_gaijin_two/widgets/content_card_widgets/content_card_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+
+import '../data/lessons.dart';
+import '../models/models.dart';
+import '../widgets/content_card_widgets/content_card_widgets.dart';
 
 class LessonPage extends StatelessWidget {
   static const route = '/lesson';

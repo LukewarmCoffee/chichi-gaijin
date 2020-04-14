@@ -1,10 +1,8 @@
-import 'package:chichi_gaijin_two/data/words.dart';
-import 'package:chichi_gaijin_two/models/content_card.dart';
-import 'package:chichi_gaijin_two/models/models.dart';
-import 'package:chichi_gaijin_two/providers/agenda.dart';
-import 'package:chichi_gaijin_two/providers/deck.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../data/words.dart';
+import '../../models/models.dart';
 
 //updates values in deck
 class ReviewView extends StatefulWidget {

@@ -1,7 +1,5 @@
-import 'package:chichi_gaijin_two/models/content_card.dart';
-import 'package:chichi_gaijin_two/providers/providers.dart';
+import '../../models/content_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class VocabCardView extends StatelessWidget {
   final VocabCard card;

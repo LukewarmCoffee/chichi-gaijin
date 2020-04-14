@@ -1,8 +1,8 @@
 //external imports
-import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 //internal imports
+import '../models/content_card.dart';
 import './lesson_types.dart';
 
 part 'lesson.g.dart';

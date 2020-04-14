@@ -1,8 +1,4 @@
 //upon finishing a lesson, moves any special contentcards into the deck
-import 'package:chichi_gaijin_two/models/lesson.dart';
-import 'package:chichi_gaijin_two/models/lesson_types.dart';
-import 'package:chichi_gaijin_two/models/word.dart';
-import 'package:chichi_gaijin_two/providers/providers.dart';
 import 'package:flutter/foundation.dart';
 
 /*class FinishLesson {

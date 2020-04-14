@@ -1,6 +1,7 @@
-import 'package:chichi_gaijin_two/models/word.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+
+import '../models/word.dart';
 
 part 'content_card.g.dart';
 

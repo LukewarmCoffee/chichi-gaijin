@@ -1,5 +1,6 @@
-import 'package:chichi_gaijin_two/models/content_card.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/content_card.dart';
 
 class TitleCardView extends StatelessWidget {
   final TitleCard card;

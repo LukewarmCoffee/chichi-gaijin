@@ -1,5 +1,6 @@
-import 'package:chichi_gaijin_two/models/models.dart';
 import 'package:flutter/foundation.dart';
+
+import '../models/models.dart';
 
 class CreateLesson with ChangeNotifier{
   String _title = '';

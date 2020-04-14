@@ -1,8 +1,9 @@
-import 'package:chichi_gaijin_two/models/content_card.dart';
-import 'package:chichi_gaijin_two/models/lesson.dart';
-import 'package:chichi_gaijin_two/models/lesson_types.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
+
+import '../models/content_card.dart';
+import '../models/lesson.dart';
+import '../models/lesson_types.dart';
 
 class Lessons with ChangeNotifier {
   static const String _boxName = 'lessonsBox';

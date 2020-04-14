@@ -2,7 +2,6 @@ import 'package:hive/hive.dart';
 
 part 'lesson_types.g.dart';
 
-
 @HiveType(typeId: 100)
 enum LessonTypes {
   //for now, users cannot edit these directly

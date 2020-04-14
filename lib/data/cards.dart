@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 //internal
-import 'package:chichi_gaijin_two/models/models.dart';
+import '../models/models.dart';
 
 //every single content card out there, lessons will pull from this list
 class Cards extends ChangeNotifier {

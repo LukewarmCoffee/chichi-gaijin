@@ -1,9 +1,8 @@
-import 'package:chichi_gaijin_two/data/data.dart';
-import 'package:chichi_gaijin_two/pages/lesson_page.dart';
-import 'package:chichi_gaijin_two/pages/pages.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../data/data.dart';
+import '../pages/pages.dart';
 
 class Home extends StatelessWidget {
   static const route = '/';

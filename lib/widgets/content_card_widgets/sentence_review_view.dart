@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:chichi_gaijin_two/models/content_card.dart';
+
+import '../../models/content_card.dart';
 
 //updates values in deck
 class SentenceReviewView extends StatefulWidget {

@@ -1,6 +1,7 @@
-import 'package:chichi_gaijin_two/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+
+import '../models/models.dart';
 
 class Words extends ChangeNotifier {
   static const boxName = 'wordsBox';
